@@ -1,14 +1,11 @@
 # Respiratory sounds classification using breathing audio
-
 Summary: Summary: Using Time-dilated Convolutional Neural Networks (TDNNs) for breathing sound classification. Two setups evaluated: 2 class classification and 4 class classification. Mel-frequency filter banks are used as features. ECAPA-TDNN is used as the model. Model and Data-preprocessing are implemented in Speechbrain.
 
 
 ## Dataset: 
-
 Dataset can be downloaded from ICBHI Challenge website(https://bhichallenge.med.auth.gr/). After downloading data, separate the audio and annotations into two different folders - `audio_data` and `annotation_data`. Rename labels file to `icbi_labels.txt` and data split file to `icbi_train_test_split.txt`. 
 
 ### Dataset Description and Analysis
-
 Preliminary datasets analysis is done using the `data_analysis.py` script to understand data distribution across different meta-data variables. Pass the path to main dataset folder to the script to get the analysis results. Below are some tables describing how the data is distrbuted. 
 
 #### Audio Data Analysis
@@ -127,13 +124,13 @@ Breathing Cycle Distribution by Disease Label
 
 
 ## Data Preprocessing and Feature Extraction
+- Removed files which have sampling rate other than 44100
+- Chunked the segments with win_len and hop parameters as audio_processing_options in train.yaml
+- Split the data into train, validation and test sets with the split_type and split_variable as train.yaml. Each split is stratified using label( abnormal and normal) as stratification variable.
+- split_utterance: split all the segments randomly into train, validation and test sets (0.7, 0.1, 0.2)
+- split_patient: split the patients into train, validation and test sets (0.7, 0.1, 0.2) and then take all the segments from the patients in the train, validation and test sets. Patients don't overlap. 
 
-1. Removed files which have sampling rate other than 44100
-2. Chunked the segments with win_len and hop parameters as audio_processing_options in train.yaml
-3. Split the data into train, validation and test sets with the split_type and split_variable as train.yaml. Each split is stratified using label( abnormal and normal) as stratification variable.
-    a. split_utterance: split all the segments randomly into train, validation and test sets (0.7, 0.1, 0.2)
-
-Dataset Statistics
+Dataset Statistics for utterance split
 | Metric              | Combined | Train  | Valid  | Test   |
 |--------------------|----------|--------|--------|--------|
 | # Patients         | 109      | 109    | 102    | 109    |
@@ -142,9 +139,8 @@ Dataset Statistics
 | Duration (hours)   | 7.12     | 4.98   | 0.71   | 1.43   |
 | Mean/Median Dur (s)| 1.9/2.0  | 1.9/2.0| 1.9/2.0| 1.9/2.0|
 
-b. split_patient: split the patients into train, validation and test sets (0.7, 0.1, 0.2) and then take all the segments from the patients in the train, validation and test sets. Patients don't overlap. 
 
-Dataset Statistics
+Dataset Statistics for patient split
 | Metric              | Combined | Train  | Valid  | Test   |
 |--------------------|----------|--------|--------|--------|
 | # Patients         | 109      | 65     | 22     | 22     |
@@ -153,8 +149,9 @@ Dataset Statistics
 | Duration (hours)   | 4.30     | 2.43   | 0.99   | 0.88   |
 | Mean/Median Dur (s)| 2.7/2.5  | 2.8/2.6| 2.4/2.4| 2.6/2.5|
 
-4. Feature Extraction:
-In this project, we utilize Mel-frequency cepstral coefficients (MFCCs) as the primary feature for breathing sound classification. The feature extraction process involves computing a set of 128 Mel-frequency bands (n_mels) from the audio signals, using a Fast Fourier Transform (FFT) size of 2048 (n_fft). The analysis window length is set to 46 samples (win_length), with a hop length of 12 samples (hop_length) to ensure overlap and smooth transitions between frames. Additionally, the feature set includes delta and double-delta coefficients (deltas: True), which capture the temporal dynamics of the audio signals. This comprehensive feature set is designed to effectively represent the acoustic characteristics of normal and abnormal breathing sounds for classification tasks.
+- Feature Extraction: We utilize Mel-frequency cepstral coefficients (MFCCs) as the primary feature for breathing sound classification. The feature extraction process involves computing a set of 128 Mel-frequency bands (n_mels) from the audio signals, using a Fast Fourier Transform (FFT) size of 2048 (n_fft). The analysis window length is set to 46 samples (win_length), with a hop length of 12 samples (hop_length) to ensure overlap and smooth transitions between frames. Additionally, the feature set includes delta and double-delta coefficients (deltas: True), which capture the temporal dynamics of the audio signals. This comprehensive feature set is designed to effectively represent the acoustic characteristics of normal and abnormal breathing sounds for classification tasks.
+
+- Data Augmentation: Signal-level data augmentation is applied to the training set using SpeechBrain's Augmenter module. Each audio sample has a chance to receive between 1 to 3 augmentations, applied in random order. The augmentation pipeline includes speed perturbation (modifying playback speed), frequency dropping (randomly masking frequency bands), and time masking (dropping random chunks of the signal). The augmented samples are concatenated with the original samples to maintain the original data distribution while expanding the dataset. This comprehensive augmentation strategy helps improve model robustness and generalization by introducing controlled variations in the training data.
 
 ## Model
 
@@ -167,22 +164,12 @@ The data is shuffled before each epoch to ensure diverse mini-batches, and the s
 
 The training progress is monitored and logged for each epoch, tracking multiple key metrics. Each log entry includes the epoch number, current learning rate, training loss, validation loss, and validation error rate. The format follows: `Epoch: {n}, lr: {learning_rate} - train loss: {train_loss} - valid loss: {valid_loss}, valid error: {valid_error}`. Training logs are saved to `train_log.txt` in the experiment's results directory. At the end of training, the best performing model using validation error as the metric is automatically loaded and evaluated on the test set, with results appended to the log file and stored in `eval_metrics.txt`.
 
-Training model for 100 epochs takes around 1 hours on a single A6000GPU.
+Training model for 100 epochs takes around 1 hours on a single A6000GPU. Training Logs are stored in `log.txt` and `train_log.txt` in the experiment's results directory.
 
 ## Evaluation Metrics
 The evaluation of the breathing sound classification model is comprehensively documented through both quantitative metrics and visual plots. The `compute_eval_metrics` function calculates and records key performance metrics such as the F1-macro score, sensitivity, specificity, and an average score, along with the confusion matrix components (True Negatives, False Positives, False Negatives, and True Positives). These metrics are crucial for understanding the model's precision, recall, and overall discriminative power, and are saved in an `eval_metrics.txt` file within the specified output folder for easy access and analysis.
 
 In addition to these metrics, the training process is visually represented through loss curves, which are plotted and saved as `training_curves.png`. These plots display the moving averages of training and validation losses, as well as validation error over the epochs, providing a clear view of the model's learning dynamics. The loss curves help in diagnosing issues such as overfitting or underfitting by showing how the model's performance evolves over time. Together, these metrics and plots offer a comprehensive evaluation framework, ensuring that the model is both quantitatively and qualitatively assessed for its ability to classify normal and abnormal breathing sounds effectively.
-
-## Inference 
-1. Clone this repo
-2. Install Speechbrain and matplotlib (pip install speechbrain matplotlib)
-3. cd to recipes/ICBHI/breathing_classification_2_classes/
-4. Download the dataset from https://bhichallenge.med.auth.gr/ and separate the audio and annotations into two different folders - `audio_data` and `annotation_data`. Rename labels file to `icbi_labels.txt` and data split file to `icbi_train_test_split.txt`.
-5. In the hparams/train_utterance.yaml and hparams/train_patients.yaml, change the `data_folder` to the path where you have stored the audio and annotation data.
-6. Run the inference script: `python train.py hparams/train_utterance.yaml` for utterance split evaluation
-7. Run the inference script: `python train.py hparams/train_patients.yaml` for patient split evaluation
-8. Results are stored in `results_patient_split/ECAPA-TDNN/42/eval_metrics.txt` and `results_utterance_split/ECAPA-TDNN/42/eval_metrics.txt`
 
 ## Results
 
@@ -211,4 +198,35 @@ Confusion Matrix:
  [ 21  38   1   0]
  [  4  40   9   0]]
 ```
+These results are in line with the results reported in the literature [1].
 
+Training Loss Plots - 2-class classification, utterance split:
+![Training curves](ICBHI/breathing_classification_2_classes/results_utterance_split/ECAPA-TDNN/42/training_curves.png)
+
+Training Loss Plots - 2-class classification, patient split:
+![Training curves](ICBHI/breathing_classification_2_classes/results_patient_split/ECAPA-TDNN/42/training_curves.png)
+
+
+
+## Discussion
+The results show that the ECAPA-TDNN model is able to classify breathing sounds into normal and abnormal categories with decent accuracy. When split across utterances, the model is able to achieve a sensitivity of 0.640 and specificity of 0.894 for the 2-class classification task. When split across patients, it achieves a sensitivity of 0.3206 and specificity of 0.8094. This indicates that in the first case, the model may be overfitting to the channel data which is not representative of the overall data. In the second case, the model is able to generalize better to the overall data. When data augmentation is applied, the model is able to achieve a sensitivity of 0.540 and specificity of 0.867 for the 2-class classification task. Unfortunately the model is achieve better performance with data augmentation. From analyzing the loss curves during training, it is possible that the model is overfitting to the majority class when data augmentation is applied since data augmentation is applied to both classes. 
+
+As expected, for the 4-class classification task, the model performance is not as good as the 2-class classification task. The model is able to achieve a sensitivity of 0.5665 and specificity of 0.7264. The class with the least number of samples, 'both' i.e. both crackles and wheezes, is the most difficult to classify. As none of the samples are classified as 'both', the sensitivity for this class is 0. The 'normal' and 'crackle' class have better performance. 
+
+Overfitting was the most common problem in this project. The model was able to achieve good performance on the training set, but the performance on the validation and test sets were not as good. Several attempts were made to improve the model performance, including data augmentation, changing the model architecture by reducing number of parameters, and tuning the hyperparameters such as learning rate, weight decay, batch size, and step size. Other possible solutions which could improve the model performance but were not explored in this project are: loss modification (focal loss), or dedicated data augmentation for minority classes.
+
+## Inference (steps to reproduce the results)
+1. Install Speechbrain and matplotlib (pip install speechbrain matplotlib). The environments.yaml file is provided in the repo. 
+2. Clone this repo
+3. move the ICBHI folder along with its contents to the Speechbrain 'recipes' folder
+3. cd to recipes/ICBHI/breathing_classification_2_classes/
+4. Download the dataset from https://bhichallenge.med.auth.gr/ and separate the audio and annotations into two different folders - `audio_data` and `annotation_data`. Rename labels file to `icbi_labels.txt` and data split file to `icbi_train_test_split.txt`. (Dataset is already provided in the repo)
+5. In the hparams/train_utterance.yaml and hparams/train_patients.yaml, change the `data_folder` to the path where you have stored the audio and annotation data.
+6. The model checkpoints are stored in the respective task folders. For examples, the model for 2-class patient split evaluation is stored in `breathing_classification_2_classes/results_patient_split/ECAPA-TDNN/42/save`.
+7. Run the inference script: `python train.py hparams/train_utterance.yaml` for utterance split evaluation. Since the training is completed, the model is loaded from the checkpoint and evaluated on the test set.
+8.  Run the inference script: `python train.py hparams/train_patients.yaml` for patient split evaluation
+9. Results are stored in `results_patient_split/ECAPA-TDNN/42/eval_metrics.txt` and `results_utterance_split/ECAPA-TDNN/42/eval_metrics.txt`
+10. For 4-class classification, run the inference script: `python train.py hparams/train_4_classes.yaml` in the breathing_classification_4_classes folder.
+
+## References
+[1] Gairola, S., Tom, F., Kwatra, N., & Jain, M. (2021, November). Respirenet: A deep neural network for accurately detecting abnormal lung sounds in limited data setting. In 2021 43rd Annual International Conference of the IEEE Engineering in Medicine & Biology Society (EMBC) (pp. 527-530). IEEE.
