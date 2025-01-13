@@ -1,6 +1,6 @@
 # Respiratory sounds classification using breathing audio
 
-Summary: 
+Summary: Summary: Using Time-dilated Convolutional Neural Networks (TDNNs) for breathing sound classification. Two setups evaluated: 2 class classification and 4 class classification. Mel-frequency filter banks are used as features. ECAPA-TDNN is used as the model. Model and Data-preprocessing are implemented in Speechbrain.
 
 
 ## Dataset: 
