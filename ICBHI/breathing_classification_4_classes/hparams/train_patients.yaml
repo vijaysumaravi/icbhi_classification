@@ -1,0 +1,140 @@
+# ########################################
+# Breathing Sound Classification using simple ECAPA-TDNN
+#
+#  * Authors: Vijay Ravi 2025
+# ########################################
+
+# Seed needs to be set at top of yaml, before objects with parameters are made
+seed: 42
+__set_seed: !apply:speechbrain.utils.seed_everything [!ref <seed>]
+
+# Dataset needs to be downloaded from https://bhichallenge.med.auth.gr/. Save audio and annotations in separate folders.
+data_folder: /u/home/s/spaceman/project-voicesafe/spapl/vijay/speechbrain/cough_audio/icbi/  # e.g., /path/to/ICBHI
+audio_dir: !ref <data_folder>/audio_data
+annotation_dir: !ref <data_folder>/annotation_data
+output_folder: !ref results_patient_split/ECAPA-TDNN/<seed>
+save_folder: !ref <output_folder>/save
+train_log: !ref <output_folder>/train_log.txt
+
+
+# Path where data manifest files will be stored
+train_annotation: !ref <output_folder>/train.json
+valid_annotation: !ref <output_folder>/valid.json
+test_annotation: !ref <output_folder>/test.json
+split_type: "random"
+split_variable: "patient"
+# split_type: "random" needs split_ratio
+split_ratio: [0.6, 0.2, 0.2]
+skip_prep: False
+
+# The train logger writes training statistics to a file, as well as stdout.
+train_logger: !new:speechbrain.utils.train_logger.FileTrainLogger
+    save_file: !ref <train_log>
+
+error_stats: !name:speechbrain.utils.metric_stats.MetricStats
+    metric: !name:speechbrain.nnet.losses.classification_error
+        reduction: batch
+
+ckpt_interval_minutes: 15 # save checkpoint every N min
+
+# Training Parameters
+number_of_epochs: 100
+batch_size: 32
+gradient_accumulation_steps: 2
+lr: 0.0001
+weight_decay: 0.002
+base_lr: 0.00001
+max_lr: !ref <lr>
+step_size: 40  # 4 times number of iterations/epoch
+mode: triangular2 # mode of learning rate schedule (triangular, triangular2, exp_range)
+gamma: 0.9998  # divides learning rate by 3 over the first 20 epochs
+sample_rate: 44100
+shuffle: True
+# random_chunk: True
+drop_last: False
+
+# Feature parameters
+
+audio_processing_options:
+    chunk_windows_seconds: 7 # in seconds
+    overlap: 0.5 # as percentage (0.0 to 1.0)
+
+n_mels: 128
+n_fft: 2048
+left_frames: 5
+right_frames: 5
+deltas: True
+win_length: 46 #
+hop_length: 12
+
+# Number of classes
+out_n_neurons: 4 # (normal, crackles, wheezes, both)
+
+dataloader_options:
+    batch_size: !ref <batch_size>
+    shuffle: !ref <shuffle>
+    num_workers: 4  # 2 on linux but 0 works on windows
+    drop_last: !ref <drop_last>
+
+# Functions
+compute_features: !new:speechbrain.lobes.features.Fbank
+    n_mels: !ref <n_mels>
+    n_fft: !ref <n_fft>
+    left_frames: !ref <left_frames>
+    right_frames: !ref <right_frames>
+    deltas: !ref <deltas>
+    sample_rate: !ref <sample_rate>
+    win_length: !ref <win_length>
+    hop_length: !ref <hop_length>
+
+embedding_model: !new:speechbrain.lobes.models.ECAPA_TDNN.ECAPA_TDNN
+    input_size: !apply:operator.mul [!ref <n_mels>, 3]  # n_mels * 3 for features + deltas + double-delta for time
+    channels: [256, 256, 512]
+    kernel_sizes: [5, 3, 1]
+    dilations: [1, 2, 1]
+    attention_channels: 32
+    lin_neurons: 64
+    dropout: 0.5  # Add dropout with 50% rate
+
+classifier: !new:speechbrain.lobes.models.ECAPA_TDNN.Classifier
+    input_size: 64
+    out_neurons: !ref <out_n_neurons>
+
+epoch_counter: !new:speechbrain.utils.epoch_loop.EpochCounter
+    limit: !ref <number_of_epochs>
+
+mean_var_norm: !new:speechbrain.processing.features.InputNormalization
+    norm_type: sentence
+    std_norm: False
+
+modules:
+    compute_features: !ref <compute_features>
+    embedding_model: !ref <embedding_model>
+    classifier: !ref <classifier>
+    mean_var_norm: !ref <mean_var_norm>
+
+compute_cost: !new:speechbrain.nnet.losses.LogSoftmaxWrapper
+    loss_fn: !new:speechbrain.nnet.losses.AdditiveAngularMargin
+        margin: 0.2
+        scale: 30
+
+# compute_error: !name:speechbrain.nnet.losses.classification_error
+
+opt_class: !name:torch.optim.Adam
+    lr: !ref <lr>
+    weight_decay: !ref <weight_decay>
+
+lr_annealing: !new:speechbrain.nnet.schedulers.CyclicLRScheduler
+    mode: !ref <mode>
+    gamma: !ref <gamma>
+    base_lr: !ref <base_lr>
+    max_lr: !ref <max_lr>
+    step_size: !ref <step_size>
+
+checkpointer: !new:speechbrain.utils.checkpoints.Checkpointer
+    checkpoints_dir: !ref <save_folder>
+    recoverables:
+        embedding_model: !ref <embedding_model>
+        classifier: !ref <classifier>
+        normalizer: !ref <mean_var_norm>
+        counter: !ref <epoch_counter>

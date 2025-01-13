@@ -1,0 +1,15 @@
+F1-macro,Avg-Sensitivity,Avg-Specificity,Average-Score
+0.2827,0.3206,0.8094,0.5650
+
+Per-class metrics:
+Class,Sensitivity,Specificity
+normal,0.5665,0.7264
+crackles,0.6991,0.5290
+wheezes,0.0167,0.9824
+both,0.0000,1.0000
+
+Confusion Matrix:
+[[298 223   5   0]
+ [ 65 151   0   0]
+ [ 21  38   1   0]
+ [  4  40   9   0]]

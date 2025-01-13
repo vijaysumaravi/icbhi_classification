@@ -1,0 +1,145 @@
+# Generated 2025-01-12 from:
+# /u/project/halperin/voicesafe/spapl/vijay/speechbrain/speechbrain/recipes/ICBHI/breathing_classification_4_classes/hparams/train_patients.yaml
+# yamllint disable
+# ########################################
+# Breathing Sound Classification using simple ECAPA-TDNN
+#
+#  * Authors: Vijay Ravi 2025
+# ########################################
+
+# Seed needs to be set at top of yaml, before objects with parameters are made
+seed: 42
+__set_seed: !apply:speechbrain.utils.seed_everything [42]
+
+# Dataset needs to be downloaded from https://bhichallenge.med.auth.gr/. Save audio and annotations in separate folders.
+data_folder: /u/home/s/spaceman/project-voicesafe/spapl/vijay/speechbrain/cough_audio/icbi/  # e.g., /path/to/ICBHI
+audio_dir: 
+  /u/home/s/spaceman/project-voicesafe/spapl/vijay/speechbrain/cough_audio/icbi//audio_data
+annotation_dir: 
+  /u/home/s/spaceman/project-voicesafe/spapl/vijay/speechbrain/cough_audio/icbi//annotation_data
+output_folder: results_patient_split/ECAPA-TDNN/42
+save_folder: results_patient_split/ECAPA-TDNN/42/save
+train_log: results_patient_split/ECAPA-TDNN/42/train_log.txt
+
+
+# Path where data manifest files will be stored
+train_annotation: results_patient_split/ECAPA-TDNN/42/train.json
+valid_annotation: results_patient_split/ECAPA-TDNN/42/valid.json
+test_annotation: results_patient_split/ECAPA-TDNN/42/test.json
+split_type: random
+split_variable: patient
+# split_type: "random" needs split_ratio
+split_ratio: [0.6, 0.2, 0.2]
+skip_prep: false
+
+# The train logger writes training statistics to a file, as well as stdout.
+train_logger: !new:speechbrain.utils.train_logger.FileTrainLogger
+  save_file: results_patient_split/ECAPA-TDNN/42/train_log.txt
+
+error_stats: !name:speechbrain.utils.metric_stats.MetricStats
+  metric: !name:speechbrain.nnet.losses.classification_error
+    reduction: batch
+
+ckpt_interval_minutes: 15 # save checkpoint every N min
+
+# Training Parameters
+number_of_epochs: 200
+batch_size: 32
+gradient_accumulation_steps: 2
+lr: 0.0003
+weight_decay: 0.002
+base_lr: 0.00001
+max_lr: 0.0003
+step_size: 20  # 4 times number of iterations/epoch
+mode: triangular2 # mode of learning rate schedule (triangular, triangular2, exp_range)
+gamma: 0.9998  # divides learning rate by 3 over the first 20 epochs
+sample_rate: 44100
+shuffle: true
+# random_chunk: True
+drop_last: false
+
+# Feature parameters
+
+audio_processing_options:
+  chunk_windows_seconds: 7   # in seconds
+  overlap: 0.5   # as percentage (0.0 to 1.0)
+
+n_mels: 128
+n_fft: 2048
+left_frames: 5
+right_frames: 5
+deltas: true
+win_length: 46 #
+hop_length: 12
+
+# Number of classes
+out_n_neurons: 4 # (normal, crackles, wheezes, both)
+
+dataloader_options:
+  batch_size: 32
+  shuffle: true
+  num_workers: 4    # 2 on linux but 0 works on windows
+  drop_last: false
+
+# Functions
+compute_features: &id001 !new:speechbrain.lobes.features.Fbank
+  n_mels: 128
+  n_fft: 2048
+  left_frames: 5
+  right_frames: 5
+  deltas: true
+  sample_rate: 44100
+  win_length: 46
+  hop_length: 12
+
+embedding_model: &id002 !new:speechbrain.lobes.models.ECAPA_TDNN.ECAPA_TDNN
+  input_size: !apply:operator.mul [128, 3]              # n_mels * 3 for features + deltas + double-delta for time
+  channels: [256, 256, 512]
+  kernel_sizes: [5, 3, 1]
+  dilations: [1, 2, 1]
+  attention_channels: 32
+  lin_neurons: 128
+  dropout: 0.5    # Add dropout with 50% rate
+
+classifier: &id003 !new:speechbrain.lobes.models.ECAPA_TDNN.Classifier
+  input_size: 128
+  out_neurons: 4
+
+epoch_counter: &id005 !new:speechbrain.utils.epoch_loop.EpochCounter
+  limit: 200
+
+mean_var_norm: &id004 !new:speechbrain.processing.features.InputNormalization
+
+  norm_type: sentence
+  std_norm: false
+
+modules:
+  compute_features: *id001
+  embedding_model: *id002
+  classifier: *id003
+  mean_var_norm: *id004
+compute_cost: !new:speechbrain.nnet.losses.LogSoftmaxWrapper
+  loss_fn: !new:speechbrain.nnet.losses.AdditiveAngularMargin
+    margin: 0.2
+    scale: 30
+
+# compute_error: !name:speechbrain.nnet.losses.classification_error
+
+opt_class: !name:torch.optim.Adam
+  lr: 0.0003
+  weight_decay: 0.002
+
+lr_annealing: !new:speechbrain.nnet.schedulers.CyclicLRScheduler
+  mode: triangular2
+  gamma: 0.9998
+  base_lr: 0.00001
+  max_lr: 0.0003
+  step_size: 20
+
+checkpointer: !new:speechbrain.utils.checkpoints.Checkpointer
+  checkpoints_dir: results_patient_split/ECAPA-TDNN/42/save
+  recoverables:
+    embedding_model: *id002
+    classifier: *id003
+    normalizer: *id004
+    counter: *id005

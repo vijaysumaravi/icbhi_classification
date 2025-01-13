@@ -1,0 +1,2 @@
+F1-macro,Sensitivity,Specificity, Average Score, Confusion_Matrix(TN,FP,FN,TP)
+0.5670,0.4531,0.8271,0.6401,311,65,461,382

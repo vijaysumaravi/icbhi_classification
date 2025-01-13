@@ -1,0 +1,727 @@
+2025-01-12 23:54:13,290 - speechbrain.utils.quirks - INFO - Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+2025-01-12 23:54:13,291 - speechbrain.utils.quirks - INFO - Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2025-01-12 23:54:13,291 - speechbrain.core - INFO - Beginning experiment!
+2025-01-12 23:54:13,291 - speechbrain.core - INFO - Experiment folder: results_patient_split/ECAPA-TDNN/42
+2025-01-12 23:54:13,883 - speechbrain.utils.superpowers - DEBUG - audioread==3.0.1
+Bottleneck @ file:///croot/bottleneck_1731058641041/work
+Brotli @ file:///croot/brotli-split_1736182456865/work
+certifi @ file:///croot/certifi_1734473278428/work/certifi
+cffi==1.17.1
+charset-normalizer @ file:///croot/charset-normalizer_1721748349566/work
+contourpy==1.3.0
+cycler==0.12.1
+decorator==5.1.1
+filelock @ file:///croot/filelock_1700591183607/work
+fonttools==4.55.3
+fsspec==2024.12.0
+gmpy2 @ file:///tmp/build/80754af9/gmpy2_1645438755360/work
+huggingface-hub==0.27.1
+HyperPyYAML==1.2.2
+idna @ file:///croot/idna_1714398848350/work
+importlib_resources==6.5.2
+Jinja2 @ file:///croot/jinja2_1730902924303/work
+joblib==1.4.2
+kiwisolver==1.4.7
+lazy_loader==0.4
+librosa==0.10.2.post1
+llvmlite==0.43.0
+MarkupSafe @ file:///croot/markupsafe_1704205993651/work
+matplotlib==3.9.4
+mkl-service==2.4.0
+mkl_fft @ file:///io/mkl313/mkl_fft_1730824109137/work
+mkl_random @ file:///io/mkl313/mkl_random_1730823916628/work
+mpmath @ file:///croot/mpmath_1690848262763/work
+msgpack==1.1.0
+networkx @ file:///croot/networkx_1717597493534/work
+numba==0.60.0
+numexpr @ file:///croot/numexpr_1730215937391/work
+numpy @ file:///croot/numpy_and_numpy_base_1708638617955/work/dist/numpy-1.26.4-cp39-cp39-linux_x86_64.whl#sha256=6094eeedd869502faa0fd0a8c5ad3a70c5779be06ddd1feb7627e5c212fac420
+packaging==24.2
+pandas @ file:///croot/pandas_1732735089971/work/dist/pandas-2.2.3-cp39-cp39-linux_x86_64.whl#sha256=0a51ed2e81ab863e3d00ed6c5049192ce578ecb38fb467d2f9a6585d3c25f666
+pillow @ file:///croot/pillow_1734430590456/work
+platformdirs==4.3.6
+pooch==1.8.2
+pycparser==2.22
+pyparsing==3.2.1
+PySocks @ file:///tmp/build/80754af9/pysocks_1605305812635/work
+python-dateutil @ file:///croot/python-dateutil_1716495738603/work
+pytz @ file:///croot/pytz_1713974312559/work
+PyYAML @ file:///croot/pyyaml_1728657952215/work
+requests @ file:///croot/requests_1730999120400/work
+ruamel.yaml==0.18.10
+ruamel.yaml.clib==0.2.12
+scikit-learn==1.6.0
+scipy==1.13.1
+sentencepiece==0.2.0
+six @ file:///tmp/build/80754af9/six_1644875935023/work
+soundfile==0.13.0
+soxr==0.5.0.post1
+speechbrain==1.0.2
+sympy @ file:///croot/sympy_1734622612703/work
+threadpoolctl==3.5.0
+torch==2.2.1
+torchaudio==2.2.1
+torchvision==0.17.1
+tqdm==4.67.1
+triton==2.2.0
+typing_extensions @ file:///croot/typing_extensions_1734714854207/work
+tzdata @ file:///croot/python-tzdata_1690578112552/work
+urllib3 @ file:///croot/urllib3_1727769808118/work
+zipp==3.21.0
+
+
+2025-01-12 23:54:13,934 - speechbrain.utils.superpowers - DEBUG - e28e87a00
+
+
+2025-01-12 23:54:15,035 - prep_icbi - INFO - Number of valid audio files: 824
+2025-01-12 23:54:15,037 - prep_icbi - INFO - Number of annotation files: 824
+2025-01-12 23:54:16,954 - prep_icbi - INFO - Splitting data into train, validation and test sets using random splitting of patients.
+2025-01-12 23:54:17,077 - prep_icbi - INFO - Saved results_patient_split/ECAPA-TDNN/42/train.json successfully!
+2025-01-12 23:54:17,129 - prep_icbi - INFO - Saved results_patient_split/ECAPA-TDNN/42/valid.json successfully!
+2025-01-12 23:54:17,163 - prep_icbi - INFO - Saved results_patient_split/ECAPA-TDNN/42/test.json successfully!
+2025-01-12 23:54:17,175 - speechbrain.utils.checkpoints - DEBUG - Registered checkpoint save hook for save
+2025-01-12 23:54:17,175 - speechbrain.utils.checkpoints - DEBUG - Registered checkpoint load hook for load_if_possible
+2025-01-12 23:54:17,264 - speechbrain.dataio.encoder - DEBUG - Would load categorical encoding from results_patient_split/ECAPA-TDNN/42/save/label_encoder.txt, but file doesn't exist yet.
+2025-01-12 23:54:17,274 - speechbrain.dataio.encoder - INFO - Load called, but CategoricalEncoder is not empty. Loaded data will overwrite everything. This is normal if there is e.g. an unk label defined at init.
+2025-01-12 23:54:17,275 - speechbrain.dataio.encoder - DEBUG - Loaded categorical encoding from results_patient_split/ECAPA-TDNN/42/save/label_encoder.txt
+2025-01-12 23:54:17,292 - speechbrain.core - INFO - Info: ckpt_interval_minutes arg from hparam file is used
+2025-01-12 23:54:17,367 - speechbrain.core - INFO - Gradscaler enabled: False. Using precision: fp32.
+2025-01-12 23:54:17,367 - speechbrain.core - INFO - Breathing_classification_Brain Model Statistics:
+* Total Number of Trainable Parameters: 979.6k
+* Total Number of Parameters: 979.6k
+* Trainable Parameters represent 100.0000% of the total size.
+2025-01-12 23:54:17,369 - speechbrain.utils.checkpoints - INFO - Would load a checkpoint here, but none found yet.
+2025-01-12 23:54:17,369 - speechbrain.utils.epoch_loop - INFO - Going into epoch 1
+2025-01-12 23:54:33,178 - speechbrain.nnet.schedulers - INFO - Changing lr from 4.3e-05 to 4.4e-05
+2025-01-12 23:54:33,180 - speechbrain.utils.train_logger - INFO - Epoch: 1, lr: 4.15e-05 - train loss: 8.48 - valid loss: 7.10, valid error: 5.90e-01
+2025-01-12 23:54:33,324 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-54-33+00
+2025-01-12 23:54:33,333 - speechbrain.utils.epoch_loop - INFO - Going into epoch 2
+2025-01-12 23:54:49,355 - speechbrain.nnet.schedulers - INFO - Changing lr from 2.2e-05 to 2.2e-05
+2025-01-12 23:54:49,356 - speechbrain.utils.train_logger - INFO - Epoch: 2, lr: 2.29e-05 - train loss: 7.92 - valid loss: 6.97, valid error: 5.77e-01
+2025-01-12 23:54:49,500 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-54-49+00
+2025-01-12 23:54:49,529 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-54-33+00
+2025-01-12 23:54:49,529 - speechbrain.utils.epoch_loop - INFO - Going into epoch 3
+2025-01-12 23:55:05,534 - speechbrain.nnet.schedulers - INFO - Changing lr from 1.1e-05 to 1.1e-05
+2025-01-12 23:55:05,536 - speechbrain.utils.train_logger - INFO - Epoch: 3, lr: 1.08e-05 - train loss: 7.57 - valid loss: 6.88, valid error: 5.45e-01
+2025-01-12 23:55:05,673 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-55-05+00
+2025-01-12 23:55:05,707 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-54-49+00
+2025-01-12 23:55:05,707 - speechbrain.utils.epoch_loop - INFO - Going into epoch 4
+2025-01-12 23:55:21,794 - speechbrain.nnet.schedulers - INFO - Changing lr from 1.3e-05 to 1.3e-05
+2025-01-12 23:55:21,796 - speechbrain.utils.train_logger - INFO - Epoch: 4, lr: 1.25e-05 - train loss: 7.38 - valid loss: 6.76, valid error: 5.37e-01
+2025-01-12 23:55:21,940 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-55-21+00
+2025-01-12 23:55:21,977 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-55-05+00
+2025-01-12 23:55:21,977 - speechbrain.utils.epoch_loop - INFO - Going into epoch 5
+2025-01-12 23:55:38,055 - speechbrain.nnet.schedulers - INFO - Changing lr from 1.1e-05 to 1e-05
+2025-01-12 23:55:38,057 - speechbrain.utils.train_logger - INFO - Epoch: 5, lr: 1.06e-05 - train loss: 7.20 - valid loss: 6.60, valid error: 5.06e-01
+2025-01-12 23:55:38,195 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-55-38+00
+2025-01-12 23:55:38,232 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-55-21+00
+2025-01-12 23:55:38,232 - speechbrain.utils.epoch_loop - INFO - Going into epoch 6
+2025-01-12 23:55:54,315 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-12 23:55:54,317 - speechbrain.utils.train_logger - INFO - Epoch: 6, lr: 1.01e-05 - train loss: 7.15 - valid loss: 6.67, valid error: 5.29e-01
+2025-01-12 23:55:54,460 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-55-54+00
+2025-01-12 23:55:54,497 - speechbrain.utils.epoch_loop - INFO - Going into epoch 7
+2025-01-12 23:56:10,790 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-12 23:56:10,791 - speechbrain.utils.train_logger - INFO - Epoch: 7, lr: 1.02e-05 - train loss: 7.06 - valid loss: 6.65, valid error: 5.21e-01
+2025-01-12 23:56:10,933 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-56-10+00
+2025-01-12 23:56:11,001 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-55-54+00
+2025-01-12 23:56:11,002 - speechbrain.utils.epoch_loop - INFO - Going into epoch 8
+2025-01-12 23:56:27,253 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-12 23:56:27,255 - speechbrain.utils.train_logger - INFO - Epoch: 8, lr: 1.00e-05 - train loss: 7.04 - valid loss: 6.60, valid error: 5.16e-01
+2025-01-12 23:56:27,396 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-56-27+00
+2025-01-12 23:56:27,467 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-56-10+00
+2025-01-12 23:56:27,467 - speechbrain.utils.epoch_loop - INFO - Going into epoch 9
+2025-01-12 23:56:43,718 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-12 23:56:43,719 - speechbrain.utils.train_logger - INFO - Epoch: 9, lr: 1.00e-05 - train loss: 6.86 - valid loss: 6.58, valid error: 5.00e-01
+2025-01-12 23:56:43,854 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-56-43+00
+2025-01-12 23:56:43,928 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-56-27+00
+2025-01-12 23:56:43,936 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-55-38+00
+2025-01-12 23:56:43,936 - speechbrain.utils.epoch_loop - INFO - Going into epoch 10
+2025-01-12 23:56:59,986 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-12 23:56:59,988 - speechbrain.utils.train_logger - INFO - Epoch: 10, lr: 1.00e-05 - train loss: 6.78 - valid loss: 6.53, valid error: 4.96e-01
+2025-01-12 23:57:00,132 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-56-59+00
+2025-01-12 23:57:00,197 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-56-43+00
+2025-01-12 23:57:00,197 - speechbrain.utils.epoch_loop - INFO - Going into epoch 11
+2025-01-12 23:57:16,444 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-12 23:57:16,445 - speechbrain.utils.train_logger - INFO - Epoch: 11, lr: 1.00e-05 - train loss: 6.73 - valid loss: 6.54, valid error: 4.94e-01
+2025-01-12 23:57:16,584 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-57-16+00
+2025-01-12 23:57:16,652 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-56-59+00
+2025-01-12 23:57:16,652 - speechbrain.utils.epoch_loop - INFO - Going into epoch 12
+2025-01-12 23:57:32,827 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-12 23:57:32,829 - speechbrain.utils.train_logger - INFO - Epoch: 12, lr: 1.00e-05 - train loss: 6.70 - valid loss: 6.54, valid error: 4.95e-01
+2025-01-12 23:57:32,969 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-57-32+00
+2025-01-12 23:57:33,035 - speechbrain.utils.epoch_loop - INFO - Going into epoch 13
+2025-01-12 23:57:49,235 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-12 23:57:49,237 - speechbrain.utils.train_logger - INFO - Epoch: 13, lr: 1.00e-05 - train loss: 6.54 - valid loss: 6.47, valid error: 4.86e-01
+2025-01-12 23:57:49,374 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-57-49+00
+2025-01-12 23:57:49,475 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-57-16+00
+2025-01-12 23:57:49,483 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-57-32+00
+2025-01-12 23:57:49,483 - speechbrain.utils.epoch_loop - INFO - Going into epoch 14
+2025-01-12 23:58:05,473 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-12 23:58:05,475 - speechbrain.utils.train_logger - INFO - Epoch: 14, lr: 1.00e-05 - train loss: 6.56 - valid loss: 6.46, valid error: 4.86e-01
+2025-01-12 23:58:05,619 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-58-05+00
+2025-01-12 23:58:05,705 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-57-49+00
+2025-01-12 23:58:05,705 - speechbrain.utils.epoch_loop - INFO - Going into epoch 15
+2025-01-12 23:58:21,936 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-12 23:58:21,937 - speechbrain.utils.train_logger - INFO - Epoch: 15, lr: 1.00e-05 - train loss: 6.44 - valid loss: 6.41, valid error: 4.98e-01
+2025-01-12 23:58:22,079 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-58-21+00
+2025-01-12 23:58:22,167 - speechbrain.utils.epoch_loop - INFO - Going into epoch 16
+2025-01-12 23:58:38,404 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-12 23:58:38,406 - speechbrain.utils.train_logger - INFO - Epoch: 16, lr: 1.00e-05 - train loss: 6.44 - valid loss: 6.46, valid error: 4.95e-01
+2025-01-12 23:58:38,553 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-58-38+00
+2025-01-12 23:58:38,695 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-58-21+00
+2025-01-12 23:58:38,695 - speechbrain.utils.epoch_loop - INFO - Going into epoch 17
+2025-01-12 23:58:54,819 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-12 23:58:54,820 - speechbrain.utils.train_logger - INFO - Epoch: 17, lr: 1.00e-05 - train loss: 6.31 - valid loss: 6.43, valid error: 4.89e-01
+2025-01-12 23:58:54,963 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-58-54+00
+2025-01-12 23:58:55,112 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-58-38+00
+2025-01-12 23:58:55,112 - speechbrain.utils.epoch_loop - INFO - Going into epoch 18
+2025-01-12 23:59:11,265 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-12 23:59:11,267 - speechbrain.utils.train_logger - INFO - Epoch: 18, lr: 1.00e-05 - train loss: 6.27 - valid loss: 6.40, valid error: 4.92e-01
+2025-01-12 23:59:11,407 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-59-11+00
+2025-01-12 23:59:11,555 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-58-54+00
+2025-01-12 23:59:11,556 - speechbrain.utils.epoch_loop - INFO - Going into epoch 19
+2025-01-12 23:59:27,779 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-12 23:59:27,780 - speechbrain.utils.train_logger - INFO - Epoch: 19, lr: 1.00e-05 - train loss: 6.22 - valid loss: 6.41, valid error: 4.88e-01
+2025-01-12 23:59:27,916 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-59-27+00
+2025-01-12 23:59:28,055 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-59-11+00
+2025-01-12 23:59:28,055 - speechbrain.utils.epoch_loop - INFO - Going into epoch 20
+2025-01-12 23:59:44,130 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-12 23:59:44,431 - speechbrain.utils.train_logger - INFO - Epoch: 20, lr: 1.00e-05 - train loss: 6.17 - valid loss: 6.36, valid error: 4.90e-01
+2025-01-12 23:59:44,583 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-59-44+00
+2025-01-12 23:59:44,747 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-59-27+00
+2025-01-12 23:59:44,747 - speechbrain.utils.epoch_loop - INFO - Going into epoch 21
+2025-01-13 00:00:00,964 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:00:00,966 - speechbrain.utils.train_logger - INFO - Epoch: 21, lr: 1.00e-05 - train loss: 6.09 - valid loss: 6.36, valid error: 4.94e-01
+2025-01-13 00:00:01,109 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-00-00+00
+2025-01-13 00:00:01,300 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-59-44+00
+2025-01-13 00:00:01,300 - speechbrain.utils.epoch_loop - INFO - Going into epoch 22
+2025-01-13 00:00:17,584 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:00:17,586 - speechbrain.utils.train_logger - INFO - Epoch: 22, lr: 1.00e-05 - train loss: 6.11 - valid loss: 6.38, valid error: 4.98e-01
+2025-01-13 00:00:17,725 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-00-17+00
+2025-01-13 00:00:17,899 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-00-00+00
+2025-01-13 00:00:17,899 - speechbrain.utils.epoch_loop - INFO - Going into epoch 23
+2025-01-13 00:00:34,285 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:00:34,286 - speechbrain.utils.train_logger - INFO - Epoch: 23, lr: 1.00e-05 - train loss: 6.02 - valid loss: 6.37, valid error: 4.98e-01
+2025-01-13 00:00:34,422 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-00-34+00
+2025-01-13 00:00:34,585 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-00-17+00
+2025-01-13 00:00:34,585 - speechbrain.utils.epoch_loop - INFO - Going into epoch 24
+2025-01-13 00:00:50,548 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:00:50,550 - speechbrain.utils.train_logger - INFO - Epoch: 24, lr: 1.00e-05 - train loss: 5.99 - valid loss: 6.36, valid error: 5.02e-01
+2025-01-13 00:00:50,694 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-00-50+00
+2025-01-13 00:00:50,869 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-00-34+00
+2025-01-13 00:00:50,869 - speechbrain.utils.epoch_loop - INFO - Going into epoch 25
+2025-01-13 00:01:06,982 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:01:06,984 - speechbrain.utils.train_logger - INFO - Epoch: 25, lr: 1.00e-05 - train loss: 5.98 - valid loss: 6.36, valid error: 4.96e-01
+2025-01-13 00:01:07,119 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-01-06+00
+2025-01-13 00:01:07,298 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-00-50+00
+2025-01-13 00:01:07,298 - speechbrain.utils.epoch_loop - INFO - Going into epoch 26
+2025-01-13 00:01:23,360 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:01:23,361 - speechbrain.utils.train_logger - INFO - Epoch: 26, lr: 1.00e-05 - train loss: 6.00 - valid loss: 6.32, valid error: 4.93e-01
+2025-01-13 00:01:23,504 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-01-23+00
+2025-01-13 00:01:23,702 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-01-06+00
+2025-01-13 00:01:23,702 - speechbrain.utils.epoch_loop - INFO - Going into epoch 27
+2025-01-13 00:01:40,028 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:01:40,029 - speechbrain.utils.train_logger - INFO - Epoch: 27, lr: 1.00e-05 - train loss: 5.93 - valid loss: 6.35, valid error: 4.99e-01
+2025-01-13 00:01:40,168 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-01-40+00
+2025-01-13 00:01:40,379 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-01-23+00
+2025-01-13 00:01:40,379 - speechbrain.utils.epoch_loop - INFO - Going into epoch 28
+2025-01-13 00:01:56,659 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:01:56,660 - speechbrain.utils.train_logger - INFO - Epoch: 28, lr: 1.00e-05 - train loss: 5.87 - valid loss: 6.34, valid error: 4.96e-01
+2025-01-13 00:01:56,799 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-01-56+00
+2025-01-13 00:01:57,019 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-01-40+00
+2025-01-13 00:01:57,019 - speechbrain.utils.epoch_loop - INFO - Going into epoch 29
+2025-01-13 00:02:13,189 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:02:13,190 - speechbrain.utils.train_logger - INFO - Epoch: 29, lr: 1.00e-05 - train loss: 5.78 - valid loss: 6.38, valid error: 4.98e-01
+2025-01-13 00:02:13,334 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-02-13+00
+2025-01-13 00:02:13,577 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-01-56+00
+2025-01-13 00:02:13,577 - speechbrain.utils.epoch_loop - INFO - Going into epoch 30
+2025-01-13 00:02:29,584 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:02:29,586 - speechbrain.utils.train_logger - INFO - Epoch: 30, lr: 1.00e-05 - train loss: 5.82 - valid loss: 6.34, valid error: 4.93e-01
+2025-01-13 00:02:29,729 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-02-29+00
+2025-01-13 00:02:29,969 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-02-13+00
+2025-01-13 00:02:29,970 - speechbrain.utils.epoch_loop - INFO - Going into epoch 31
+2025-01-13 00:02:46,008 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:02:46,010 - speechbrain.utils.train_logger - INFO - Epoch: 31, lr: 1.00e-05 - train loss: 5.68 - valid loss: 6.30, valid error: 4.84e-01
+2025-01-13 00:02:46,142 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-02-46+00
+2025-01-13 00:02:46,368 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-12+23-58-05+00
+2025-01-13 00:02:46,377 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-02-29+00
+2025-01-13 00:02:46,377 - speechbrain.utils.epoch_loop - INFO - Going into epoch 32
+2025-01-13 00:03:02,460 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:03:02,462 - speechbrain.utils.train_logger - INFO - Epoch: 32, lr: 1.00e-05 - train loss: 5.81 - valid loss: 6.29, valid error: 4.96e-01
+2025-01-13 00:03:02,607 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-03-02+00
+2025-01-13 00:03:02,771 - speechbrain.utils.epoch_loop - INFO - Going into epoch 33
+2025-01-13 00:03:19,058 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:03:19,060 - speechbrain.utils.train_logger - INFO - Epoch: 33, lr: 1.00e-05 - train loss: 5.60 - valid loss: 6.34, valid error: 4.90e-01
+2025-01-13 00:03:19,202 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-03-19+00
+2025-01-13 00:03:19,441 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-03-02+00
+2025-01-13 00:03:19,441 - speechbrain.utils.epoch_loop - INFO - Going into epoch 34
+2025-01-13 00:03:35,537 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:03:35,539 - speechbrain.utils.train_logger - INFO - Epoch: 34, lr: 1.00e-05 - train loss: 5.72 - valid loss: 6.34, valid error: 4.95e-01
+2025-01-13 00:03:35,679 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-03-35+00
+2025-01-13 00:03:35,928 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-03-19+00
+2025-01-13 00:03:35,928 - speechbrain.utils.epoch_loop - INFO - Going into epoch 35
+2025-01-13 00:03:52,069 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:03:52,070 - speechbrain.utils.train_logger - INFO - Epoch: 35, lr: 1.00e-05 - train loss: 5.59 - valid loss: 6.27, valid error: 4.87e-01
+2025-01-13 00:03:52,209 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-03-52+00
+2025-01-13 00:03:52,467 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-03-35+00
+2025-01-13 00:03:52,468 - speechbrain.utils.epoch_loop - INFO - Going into epoch 36
+2025-01-13 00:04:08,666 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:04:08,668 - speechbrain.utils.train_logger - INFO - Epoch: 36, lr: 1.00e-05 - train loss: 5.62 - valid loss: 6.28, valid error: 4.89e-01
+2025-01-13 00:04:08,808 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-04-08+00
+2025-01-13 00:04:09,132 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-03-52+00
+2025-01-13 00:04:09,132 - speechbrain.utils.epoch_loop - INFO - Going into epoch 37
+2025-01-13 00:04:25,347 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:04:25,348 - speechbrain.utils.train_logger - INFO - Epoch: 37, lr: 1.00e-05 - train loss: 5.54 - valid loss: 6.30, valid error: 4.89e-01
+2025-01-13 00:04:25,486 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-04-25+00
+2025-01-13 00:04:25,812 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-04-08+00
+2025-01-13 00:04:25,812 - speechbrain.utils.epoch_loop - INFO - Going into epoch 38
+2025-01-13 00:04:41,939 - speechbrain.nnet.schedulers - INFO - Changing lr from 1e-05 to 1e-05
+2025-01-13 00:04:41,940 - speechbrain.utils.train_logger - INFO - Epoch: 38, lr: 1.00e-05 - train loss: 5.46 - valid loss: 6.34, valid error: 4.93e-01
+2025-01-13 00:04:42,078 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-04-41+00
+2025-01-13 00:04:42,346 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-04-25+00
+2025-01-13 00:04:42,346 - speechbrain.utils.epoch_loop - INFO - Going into epoch 39
+2025-01-13 00:04:58,290 - speechbrain.utils.train_logger - INFO - Epoch: 39, lr: 1.00e-05 - train loss: 5.48 - valid loss: 6.33, valid error: 4.91e-01
+2025-01-13 00:04:58,437 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-04-58+00
+2025-01-13 00:04:58,703 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-04-41+00
+2025-01-13 00:04:58,703 - speechbrain.utils.epoch_loop - INFO - Going into epoch 40
+2025-01-13 00:05:18,136 - speechbrain.utils.train_logger - INFO - Epoch: 40, lr: 1.00e-05 - train loss: 5.47 - valid loss: 6.30, valid error: 4.86e-01
+2025-01-13 00:05:18,282 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-05-18+00
+2025-01-13 00:05:18,585 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-04-58+00
+2025-01-13 00:05:18,586 - speechbrain.utils.epoch_loop - INFO - Going into epoch 41
+2025-01-13 00:05:34,792 - speechbrain.utils.train_logger - INFO - Epoch: 41, lr: 1.00e-05 - train loss: 5.45 - valid loss: 6.31, valid error: 4.86e-01
+2025-01-13 00:05:34,933 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-05-34+00
+2025-01-13 00:05:35,216 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-05-18+00
+2025-01-13 00:05:35,216 - speechbrain.utils.epoch_loop - INFO - Going into epoch 42
+2025-01-13 00:05:51,515 - speechbrain.utils.train_logger - INFO - Epoch: 42, lr: 1.00e-05 - train loss: 5.38 - valid loss: 6.29, valid error: 4.78e-01
+2025-01-13 00:05:51,659 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-05-51+00
+2025-01-13 00:05:51,978 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-05-34+00
+2025-01-13 00:05:51,984 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-02-46+00
+2025-01-13 00:05:51,984 - speechbrain.utils.epoch_loop - INFO - Going into epoch 43
+2025-01-13 00:06:08,046 - speechbrain.utils.train_logger - INFO - Epoch: 43, lr: 1.00e-05 - train loss: 5.34 - valid loss: 6.27, valid error: 4.89e-01
+2025-01-13 00:06:08,188 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-06-08+00
+2025-01-13 00:06:08,417 - speechbrain.utils.epoch_loop - INFO - Going into epoch 44
+2025-01-13 00:06:24,706 - speechbrain.utils.train_logger - INFO - Epoch: 44, lr: 1.00e-05 - train loss: 5.39 - valid loss: 6.29, valid error: 4.86e-01
+2025-01-13 00:06:24,848 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-06-24+00
+2025-01-13 00:06:25,203 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-06-08+00
+2025-01-13 00:06:25,204 - speechbrain.utils.epoch_loop - INFO - Going into epoch 45
+2025-01-13 00:06:41,445 - speechbrain.utils.train_logger - INFO - Epoch: 45, lr: 1.00e-05 - train loss: 5.25 - valid loss: 6.23, valid error: 4.86e-01
+2025-01-13 00:06:41,588 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-06-41+00
+2025-01-13 00:06:43,421 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-06-24+00
+2025-01-13 00:06:43,422 - speechbrain.utils.epoch_loop - INFO - Going into epoch 46
+2025-01-13 00:06:59,530 - speechbrain.utils.train_logger - INFO - Epoch: 46, lr: 1.00e-05 - train loss: 5.28 - valid loss: 6.22, valid error: 4.85e-01
+2025-01-13 00:06:59,677 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-06-59+00
+2025-01-13 00:07:00,040 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-06-41+00
+2025-01-13 00:07:00,040 - speechbrain.utils.epoch_loop - INFO - Going into epoch 47
+2025-01-13 00:07:16,386 - speechbrain.utils.train_logger - INFO - Epoch: 47, lr: 1.00e-05 - train loss: 5.24 - valid loss: 6.20, valid error: 4.86e-01
+2025-01-13 00:07:16,528 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-07-16+00
+2025-01-13 00:07:17,174 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-06-59+00
+2025-01-13 00:07:17,175 - speechbrain.utils.epoch_loop - INFO - Going into epoch 48
+2025-01-13 00:07:33,540 - speechbrain.utils.train_logger - INFO - Epoch: 48, lr: 1.00e-05 - train loss: 5.19 - valid loss: 6.17, valid error: 4.79e-01
+2025-01-13 00:07:33,678 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-07-33+00
+2025-01-13 00:07:34,020 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-07-16+00
+2025-01-13 00:07:34,021 - speechbrain.utils.epoch_loop - INFO - Going into epoch 49
+2025-01-13 00:07:50,026 - speechbrain.utils.train_logger - INFO - Epoch: 49, lr: 1.00e-05 - train loss: 5.18 - valid loss: 6.15, valid error: 4.77e-01
+2025-01-13 00:07:50,167 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-07-50+00
+2025-01-13 00:07:50,518 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-07-33+00
+2025-01-13 00:07:50,526 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-05-51+00
+2025-01-13 00:07:50,526 - speechbrain.utils.epoch_loop - INFO - Going into epoch 50
+2025-01-13 00:08:06,895 - speechbrain.utils.train_logger - INFO - Epoch: 50, lr: 1.00e-05 - train loss: 5.12 - valid loss: 6.17, valid error: 4.86e-01
+2025-01-13 00:08:07,040 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-08-06+00
+2025-01-13 00:08:07,334 - speechbrain.utils.epoch_loop - INFO - Going into epoch 51
+2025-01-13 00:08:23,633 - speechbrain.utils.train_logger - INFO - Epoch: 51, lr: 1.00e-05 - train loss: 5.18 - valid loss: 6.17, valid error: 4.83e-01
+2025-01-13 00:08:23,775 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-08-23+00
+2025-01-13 00:08:24,179 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-08-06+00
+2025-01-13 00:08:24,179 - speechbrain.utils.epoch_loop - INFO - Going into epoch 52
+2025-01-13 00:08:40,596 - speechbrain.utils.train_logger - INFO - Epoch: 52, lr: 1.00e-05 - train loss: 5.12 - valid loss: 6.12, valid error: 4.75e-01
+2025-01-13 00:08:40,742 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-08-40+00
+2025-01-13 00:08:41,177 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-07-50+00
+2025-01-13 00:08:41,185 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-08-23+00
+2025-01-13 00:08:41,185 - speechbrain.utils.epoch_loop - INFO - Going into epoch 53
+2025-01-13 00:08:57,419 - speechbrain.utils.train_logger - INFO - Epoch: 53, lr: 1.00e-05 - train loss: 5.02 - valid loss: 6.11, valid error: 4.85e-01
+2025-01-13 00:08:57,569 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-08-57+00
+2025-01-13 00:08:57,860 - speechbrain.utils.epoch_loop - INFO - Going into epoch 54
+2025-01-13 00:09:14,016 - speechbrain.utils.train_logger - INFO - Epoch: 54, lr: 1.00e-05 - train loss: 5.05 - valid loss: 6.07, valid error: 4.84e-01
+2025-01-13 00:09:14,163 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-09-14+00
+2025-01-13 00:09:14,583 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-08-57+00
+2025-01-13 00:09:14,583 - speechbrain.utils.epoch_loop - INFO - Going into epoch 55
+2025-01-13 00:09:30,729 - speechbrain.utils.train_logger - INFO - Epoch: 55, lr: 1.00e-05 - train loss: 5.00 - valid loss: 6.10, valid error: 4.73e-01
+2025-01-13 00:09:30,870 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-09-30+00
+2025-01-13 00:09:31,328 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-08-40+00
+2025-01-13 00:09:31,337 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-09-14+00
+2025-01-13 00:09:31,337 - speechbrain.utils.epoch_loop - INFO - Going into epoch 56
+2025-01-13 00:09:47,727 - speechbrain.utils.train_logger - INFO - Epoch: 56, lr: 1.00e-05 - train loss: 4.98 - valid loss: 6.05, valid error: 4.79e-01
+2025-01-13 00:09:47,906 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-09-47+00
+2025-01-13 00:09:48,183 - speechbrain.utils.epoch_loop - INFO - Going into epoch 57
+2025-01-13 00:10:08,050 - speechbrain.utils.train_logger - INFO - Epoch: 57, lr: 1.00e-05 - train loss: 4.99 - valid loss: 6.09, valid error: 4.73e-01
+2025-01-13 00:10:08,195 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-10-08+00
+2025-01-13 00:10:08,655 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-09-47+00
+2025-01-13 00:10:08,655 - speechbrain.utils.epoch_loop - INFO - Going into epoch 58
+2025-01-13 00:10:25,070 - speechbrain.utils.train_logger - INFO - Epoch: 58, lr: 1.00e-05 - train loss: 4.93 - valid loss: 6.08, valid error: 4.82e-01
+2025-01-13 00:10:25,205 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-10-25+00
+2025-01-13 00:10:25,668 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-10-08+00
+2025-01-13 00:10:25,668 - speechbrain.utils.epoch_loop - INFO - Going into epoch 59
+2025-01-13 00:10:41,757 - speechbrain.utils.train_logger - INFO - Epoch: 59, lr: 1.00e-05 - train loss: 4.96 - valid loss: 6.02, valid error: 4.78e-01
+2025-01-13 00:10:41,899 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-10-41+00
+2025-01-13 00:10:42,364 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-10-25+00
+2025-01-13 00:10:42,364 - speechbrain.utils.epoch_loop - INFO - Going into epoch 60
+2025-01-13 00:10:58,614 - speechbrain.utils.train_logger - INFO - Epoch: 60, lr: 1.00e-05 - train loss: 5.00 - valid loss: 6.06, valid error: 4.88e-01
+2025-01-13 00:10:58,761 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-10-58+00
+2025-01-13 00:10:59,266 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-10-41+00
+2025-01-13 00:10:59,267 - speechbrain.utils.epoch_loop - INFO - Going into epoch 61
+2025-01-13 00:11:15,547 - speechbrain.utils.train_logger - INFO - Epoch: 61, lr: 1.00e-05 - train loss: 4.93 - valid loss: 5.99, valid error: 4.84e-01
+2025-01-13 00:11:15,699 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-11-15+00
+2025-01-13 00:11:16,210 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-10-58+00
+2025-01-13 00:11:16,210 - speechbrain.utils.epoch_loop - INFO - Going into epoch 62
+2025-01-13 00:11:32,460 - speechbrain.utils.train_logger - INFO - Epoch: 62, lr: 1.00e-05 - train loss: 4.85 - valid loss: 5.96, valid error: 4.74e-01
+2025-01-13 00:11:32,599 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-11-32+00
+2025-01-13 00:11:33,096 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-11-15+00
+2025-01-13 00:11:33,096 - speechbrain.utils.epoch_loop - INFO - Going into epoch 63
+2025-01-13 00:11:49,347 - speechbrain.utils.train_logger - INFO - Epoch: 63, lr: 1.00e-05 - train loss: 4.87 - valid loss: 5.93, valid error: 4.67e-01
+2025-01-13 00:11:49,487 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-11-49+00
+2025-01-13 00:11:49,974 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-09-30+00
+2025-01-13 00:11:49,982 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-11-32+00
+2025-01-13 00:11:49,982 - speechbrain.utils.epoch_loop - INFO - Going into epoch 64
+2025-01-13 00:12:06,347 - speechbrain.utils.train_logger - INFO - Epoch: 64, lr: 1.00e-05 - train loss: 4.81 - valid loss: 5.93, valid error: 4.75e-01
+2025-01-13 00:12:06,487 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-12-06+00
+2025-01-13 00:12:06,807 - speechbrain.utils.epoch_loop - INFO - Going into epoch 65
+2025-01-13 00:12:22,951 - speechbrain.utils.train_logger - INFO - Epoch: 65, lr: 1.00e-05 - train loss: 4.79 - valid loss: 5.96, valid error: 4.76e-01
+2025-01-13 00:12:23,099 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-12-22+00
+2025-01-13 00:12:23,626 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-12-06+00
+2025-01-13 00:12:23,627 - speechbrain.utils.epoch_loop - INFO - Going into epoch 66
+2025-01-13 00:12:39,937 - speechbrain.utils.train_logger - INFO - Epoch: 66, lr: 1.00e-05 - train loss: 4.80 - valid loss: 5.97, valid error: 4.75e-01
+2025-01-13 00:12:40,083 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-12-39+00
+2025-01-13 00:12:40,603 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-12-22+00
+2025-01-13 00:12:40,603 - speechbrain.utils.epoch_loop - INFO - Going into epoch 67
+2025-01-13 00:12:56,886 - speechbrain.utils.train_logger - INFO - Epoch: 67, lr: 1.00e-05 - train loss: 4.73 - valid loss: 5.91, valid error: 4.67e-01
+2025-01-13 00:12:57,025 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-12-56+00
+2025-01-13 00:12:57,516 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-12-39+00
+2025-01-13 00:12:57,524 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-11-49+00
+2025-01-13 00:12:57,525 - speechbrain.utils.epoch_loop - INFO - Going into epoch 68
+2025-01-13 00:13:13,719 - speechbrain.utils.train_logger - INFO - Epoch: 68, lr: 1.00e-05 - train loss: 4.66 - valid loss: 5.89, valid error: 4.75e-01
+2025-01-13 00:13:13,918 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-13-13+00
+2025-01-13 00:13:14,563 - speechbrain.utils.epoch_loop - INFO - Going into epoch 69
+2025-01-13 00:13:30,759 - speechbrain.utils.train_logger - INFO - Epoch: 69, lr: 1.00e-05 - train loss: 4.65 - valid loss: 5.89, valid error: 4.79e-01
+2025-01-13 00:13:30,907 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-13-30+00
+2025-01-13 00:13:31,474 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-13-13+00
+2025-01-13 00:13:31,474 - speechbrain.utils.epoch_loop - INFO - Going into epoch 70
+2025-01-13 00:13:47,716 - speechbrain.utils.train_logger - INFO - Epoch: 70, lr: 1.00e-05 - train loss: 4.68 - valid loss: 5.89, valid error: 4.78e-01
+2025-01-13 00:13:47,859 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-13-47+00
+2025-01-13 00:13:48,394 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-13-30+00
+2025-01-13 00:13:48,394 - speechbrain.utils.epoch_loop - INFO - Going into epoch 71
+2025-01-13 00:14:04,715 - speechbrain.utils.train_logger - INFO - Epoch: 71, lr: 1.00e-05 - train loss: 4.65 - valid loss: 5.89, valid error: 4.72e-01
+2025-01-13 00:14:04,859 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-14-04+00
+2025-01-13 00:14:05,511 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-13-47+00
+2025-01-13 00:14:05,512 - speechbrain.utils.epoch_loop - INFO - Going into epoch 72
+2025-01-13 00:14:21,804 - speechbrain.utils.train_logger - INFO - Epoch: 72, lr: 1.00e-05 - train loss: 4.63 - valid loss: 5.88, valid error: 4.75e-01
+2025-01-13 00:14:21,949 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-14-21+00
+2025-01-13 00:14:22,489 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-14-04+00
+2025-01-13 00:14:22,489 - speechbrain.utils.epoch_loop - INFO - Going into epoch 73
+2025-01-13 00:14:38,677 - speechbrain.utils.train_logger - INFO - Epoch: 73, lr: 1.00e-05 - train loss: 4.60 - valid loss: 5.88, valid error: 4.63e-01
+2025-01-13 00:14:38,820 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-14-38+00
+2025-01-13 00:14:39,403 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-12-56+00
+2025-01-13 00:14:39,411 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-14-21+00
+2025-01-13 00:14:39,411 - speechbrain.utils.epoch_loop - INFO - Going into epoch 74
+2025-01-13 00:14:55,583 - speechbrain.utils.train_logger - INFO - Epoch: 74, lr: 1.00e-05 - train loss: 4.62 - valid loss: 5.83, valid error: 4.63e-01
+2025-01-13 00:14:55,729 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-14-55+00
+2025-01-13 00:14:56,105 - speechbrain.utils.epoch_loop - INFO - Going into epoch 75
+2025-01-13 00:15:12,221 - speechbrain.utils.train_logger - INFO - Epoch: 75, lr: 1.00e-05 - train loss: 4.61 - valid loss: 5.84, valid error: 4.74e-01
+2025-01-13 00:15:12,364 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-15-12+00
+2025-01-13 00:15:13,017 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-14-55+00
+2025-01-13 00:15:13,018 - speechbrain.utils.epoch_loop - INFO - Going into epoch 76
+2025-01-13 00:15:29,396 - speechbrain.utils.train_logger - INFO - Epoch: 76, lr: 1.00e-05 - train loss: 4.53 - valid loss: 5.80, valid error: 4.71e-01
+2025-01-13 00:15:29,668 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-15-29+00
+2025-01-13 00:15:30,287 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-15-12+00
+2025-01-13 00:15:30,287 - speechbrain.utils.epoch_loop - INFO - Going into epoch 77
+2025-01-13 00:15:46,471 - speechbrain.utils.train_logger - INFO - Epoch: 77, lr: 1.00e-05 - train loss: 4.60 - valid loss: 5.88, valid error: 4.78e-01
+2025-01-13 00:15:46,612 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-15-46+00
+2025-01-13 00:15:47,137 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-15-29+00
+2025-01-13 00:15:47,137 - speechbrain.utils.epoch_loop - INFO - Going into epoch 78
+2025-01-13 00:16:03,446 - speechbrain.utils.train_logger - INFO - Epoch: 78, lr: 1.00e-05 - train loss: 4.55 - valid loss: 5.85, valid error: 4.70e-01
+2025-01-13 00:16:03,590 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-16-03+00
+2025-01-13 00:16:04,135 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-15-46+00
+2025-01-13 00:16:04,136 - speechbrain.utils.epoch_loop - INFO - Going into epoch 79
+2025-01-13 00:16:20,146 - speechbrain.utils.train_logger - INFO - Epoch: 79, lr: 1.00e-05 - train loss: 4.48 - valid loss: 5.80, valid error: 4.65e-01
+2025-01-13 00:16:20,314 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-16-20+00
+2025-01-13 00:16:21,001 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-16-03+00
+2025-01-13 00:16:21,001 - speechbrain.utils.epoch_loop - INFO - Going into epoch 80
+2025-01-13 00:16:37,451 - speechbrain.utils.train_logger - INFO - Epoch: 80, lr: 1.00e-05 - train loss: 4.44 - valid loss: 5.85, valid error: 4.65e-01
+2025-01-13 00:16:37,587 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-16-37+00
+2025-01-13 00:16:38,141 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-16-20+00
+2025-01-13 00:16:38,141 - speechbrain.utils.epoch_loop - INFO - Going into epoch 81
+2025-01-13 00:16:54,265 - speechbrain.utils.train_logger - INFO - Epoch: 81, lr: 1.00e-05 - train loss: 4.48 - valid loss: 5.85, valid error: 4.68e-01
+2025-01-13 00:16:54,402 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-16-54+00
+2025-01-13 00:16:55,017 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-16-37+00
+2025-01-13 00:16:55,017 - speechbrain.utils.epoch_loop - INFO - Going into epoch 82
+2025-01-13 00:17:11,220 - speechbrain.utils.train_logger - INFO - Epoch: 82, lr: 1.00e-05 - train loss: 4.48 - valid loss: 5.82, valid error: 4.73e-01
+2025-01-13 00:17:11,357 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-17-11+00
+2025-01-13 00:17:11,938 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-16-54+00
+2025-01-13 00:17:11,938 - speechbrain.utils.epoch_loop - INFO - Going into epoch 83
+2025-01-13 00:17:28,174 - speechbrain.utils.train_logger - INFO - Epoch: 83, lr: 1.00e-05 - train loss: 4.37 - valid loss: 5.87, valid error: 4.76e-01
+2025-01-13 00:17:28,328 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-17-28+00
+2025-01-13 00:17:28,910 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-17-11+00
+2025-01-13 00:17:28,910 - speechbrain.utils.epoch_loop - INFO - Going into epoch 84
+2025-01-13 00:17:45,167 - speechbrain.utils.train_logger - INFO - Epoch: 84, lr: 1.00e-05 - train loss: 4.44 - valid loss: 5.78, valid error: 4.76e-01
+2025-01-13 00:17:45,342 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-17-45+00
+2025-01-13 00:17:45,975 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-17-28+00
+2025-01-13 00:17:45,975 - speechbrain.utils.epoch_loop - INFO - Going into epoch 85
+2025-01-13 00:18:02,129 - speechbrain.utils.train_logger - INFO - Epoch: 85, lr: 1.00e-05 - train loss: 4.38 - valid loss: 5.86, valid error: 4.81e-01
+2025-01-13 00:18:02,277 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-18-02+00
+2025-01-13 00:18:02,921 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-17-45+00
+2025-01-13 00:18:02,921 - speechbrain.utils.epoch_loop - INFO - Going into epoch 86
+2025-01-13 00:18:19,076 - speechbrain.utils.train_logger - INFO - Epoch: 86, lr: 1.00e-05 - train loss: 4.34 - valid loss: 5.85, valid error: 4.85e-01
+2025-01-13 00:18:19,219 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-18-19+00
+2025-01-13 00:18:19,887 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-18-02+00
+2025-01-13 00:18:19,887 - speechbrain.utils.epoch_loop - INFO - Going into epoch 87
+2025-01-13 00:18:36,024 - speechbrain.utils.train_logger - INFO - Epoch: 87, lr: 1.00e-05 - train loss: 4.36 - valid loss: 5.83, valid error: 4.79e-01
+2025-01-13 00:18:36,162 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-18-36+00
+2025-01-13 00:18:36,778 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-18-19+00
+2025-01-13 00:18:36,778 - speechbrain.utils.epoch_loop - INFO - Going into epoch 88
+2025-01-13 00:18:52,939 - speechbrain.utils.train_logger - INFO - Epoch: 88, lr: 1.00e-05 - train loss: 4.28 - valid loss: 5.91, valid error: 4.91e-01
+2025-01-13 00:18:53,084 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-18-52+00
+2025-01-13 00:18:53,720 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-18-36+00
+2025-01-13 00:18:53,721 - speechbrain.utils.epoch_loop - INFO - Going into epoch 89
+2025-01-13 00:19:09,916 - speechbrain.utils.train_logger - INFO - Epoch: 89, lr: 1.00e-05 - train loss: 4.25 - valid loss: 5.88, valid error: 4.95e-01
+2025-01-13 00:19:10,058 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-19-09+00
+2025-01-13 00:19:10,725 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-18-52+00
+2025-01-13 00:19:10,726 - speechbrain.utils.epoch_loop - INFO - Going into epoch 90
+2025-01-13 00:19:26,884 - speechbrain.utils.train_logger - INFO - Epoch: 90, lr: 1.00e-05 - train loss: 4.27 - valid loss: 5.84, valid error: 4.76e-01
+2025-01-13 00:19:27,029 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-19-26+00
+2025-01-13 00:19:27,712 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-19-09+00
+2025-01-13 00:19:27,712 - speechbrain.utils.epoch_loop - INFO - Going into epoch 91
+2025-01-13 00:19:43,779 - speechbrain.utils.train_logger - INFO - Epoch: 91, lr: 1.00e-05 - train loss: 4.27 - valid loss: 5.84, valid error: 4.84e-01
+2025-01-13 00:19:43,919 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-19-43+00
+2025-01-13 00:19:44,567 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-19-26+00
+2025-01-13 00:19:44,567 - speechbrain.utils.epoch_loop - INFO - Going into epoch 92
+2025-01-13 00:20:00,710 - speechbrain.utils.train_logger - INFO - Epoch: 92, lr: 1.00e-05 - train loss: 4.21 - valid loss: 5.80, valid error: 4.77e-01
+2025-01-13 00:20:00,853 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-20-00+00
+2025-01-13 00:20:01,548 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-19-43+00
+2025-01-13 00:20:01,549 - speechbrain.utils.epoch_loop - INFO - Going into epoch 93
+2025-01-13 00:20:17,769 - speechbrain.utils.train_logger - INFO - Epoch: 93, lr: 1.00e-05 - train loss: 4.26 - valid loss: 5.89, valid error: 4.93e-01
+2025-01-13 00:20:17,918 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-20-17+00
+2025-01-13 00:20:18,625 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-20-00+00
+2025-01-13 00:20:18,625 - speechbrain.utils.epoch_loop - INFO - Going into epoch 94
+2025-01-13 00:20:34,876 - speechbrain.utils.train_logger - INFO - Epoch: 94, lr: 1.00e-05 - train loss: 4.14 - valid loss: 5.78, valid error: 4.77e-01
+2025-01-13 00:20:35,018 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-20-34+00
+2025-01-13 00:20:35,704 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-20-17+00
+2025-01-13 00:20:35,704 - speechbrain.utils.epoch_loop - INFO - Going into epoch 95
+2025-01-13 00:20:51,800 - speechbrain.utils.train_logger - INFO - Epoch: 95, lr: 1.00e-05 - train loss: 4.23 - valid loss: 5.77, valid error: 4.75e-01
+2025-01-13 00:20:51,943 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-20-51+00
+2025-01-13 00:20:52,686 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-20-34+00
+2025-01-13 00:20:52,687 - speechbrain.utils.epoch_loop - INFO - Going into epoch 96
+2025-01-13 00:21:08,911 - speechbrain.utils.train_logger - INFO - Epoch: 96, lr: 1.00e-05 - train loss: 4.23 - valid loss: 5.72, valid error: 4.69e-01
+2025-01-13 00:21:09,057 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-21-08+00
+2025-01-13 00:21:09,839 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-20-51+00
+2025-01-13 00:21:09,839 - speechbrain.utils.epoch_loop - INFO - Going into epoch 97
+2025-01-13 00:21:26,016 - speechbrain.utils.train_logger - INFO - Epoch: 97, lr: 1.00e-05 - train loss: 4.14 - valid loss: 5.76, valid error: 4.75e-01
+2025-01-13 00:21:26,158 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-21-26+00
+2025-01-13 00:21:26,890 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-21-08+00
+2025-01-13 00:21:26,891 - speechbrain.utils.epoch_loop - INFO - Going into epoch 98
+2025-01-13 00:21:43,055 - speechbrain.utils.train_logger - INFO - Epoch: 98, lr: 1.00e-05 - train loss: 4.13 - valid loss: 5.75, valid error: 4.85e-01
+2025-01-13 00:21:43,199 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-21-43+00
+2025-01-13 00:21:43,940 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-21-26+00
+2025-01-13 00:21:43,940 - speechbrain.utils.epoch_loop - INFO - Going into epoch 99
+2025-01-13 00:22:00,069 - speechbrain.utils.train_logger - INFO - Epoch: 99, lr: 1.00e-05 - train loss: 4.16 - valid loss: 5.81, valid error: 4.82e-01
+2025-01-13 00:22:00,208 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-22-00+00
+2025-01-13 00:22:01,016 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-21-43+00
+2025-01-13 00:22:01,017 - speechbrain.utils.epoch_loop - INFO - Going into epoch 100
+2025-01-13 00:22:17,379 - speechbrain.utils.train_logger - INFO - Epoch: 100, lr: 1.00e-05 - train loss: 4.04 - valid loss: 5.83, valid error: 5.00e-01
+2025-01-13 00:22:17,522 - speechbrain.utils.checkpoints - INFO - Saved an end-of-epoch checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-22-17+00
+2025-01-13 00:22:18,289 - speechbrain.utils.checkpoints - INFO - Deleted checkpoint in results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-22-00+00
+2025-01-13 00:22:18,294 - speechbrain.utils.checkpoints - INFO - Loading a checkpoint from results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-14-38+00
+2025-01-13 00:22:18,307 - speechbrain.dataio.dataloader - DEBUG - SaveableDataLoader was requested to load a checkpoint, but the DataLoader has already been iterated. The DataLoader file will be ignored. This is normal in evaluation, when a checkpoint is loaded just to retrieve the best model.
+2025-01-13 00:22:21,175 - speechbrain.utils.train_logger - INFO - Epoch loaded: 73 - test loss: 5.76, test error: 4.74e-01
+2025-01-13 00:22:21,181 - speechbrain.utils.checkpoints - INFO - Loading a checkpoint from results_patient_split/ECAPA-TDNN/42/save/CKPT+2025-01-13+00-14-38+00
+2025-01-13 00:22:21,191 - speechbrain.dataio.dataloader - DEBUG - SaveableDataLoader was requested to load a checkpoint, but the DataLoader has already been iterated. The DataLoader file will be ignored. This is normal in evaluation, when a checkpoint is loaded just to retrieve the best model.
+2025-01-13 00:22:24,004 - matplotlib.pyplot - DEBUG - Loaded backend agg version v2.2.
+2025-01-13 00:22:24,006 - matplotlib.font_manager - DEBUG - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0.
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUni.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-BoldOblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 1.335
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/cmsy10.ttf', name='cmsy10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/cmss10.ttf', name='cmss10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerifDisplay.ttf', name='DejaVu Serif Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBolIta.ttf', name='STIXGeneral', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Oblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymReg.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/cmex10.ttf', name='cmex10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymReg.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Italic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymBol.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneral.ttf', name='STIXGeneral', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBolIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymReg.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/cmb10.ttf', name='cmb10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/cmtt10.ttf', name='cmtt10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymBol.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Bold.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymBol.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansDisplay.ttf', name='DejaVu Sans Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymReg.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-BoldOblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFiveSymReg.ttf', name='STIXSizeFiveSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymBol.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBol.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Oblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 1.05
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBol.ttf', name='STIXGeneral', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
+2025-01-13 00:22:24,007 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralItalic.ttf', name='STIXGeneral', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/cmr10.ttf', name='cmr10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/cmmi10.ttf', name='cmmi10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-BoldItalic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWGothic-Book.otf', name='URW Gothic', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWGothic-Demi.otf', name='URW Gothic', style='normal', variant='normal', weight=600, stretch='normal', size='scalable')) = 10.24
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/P052-Roman.otf', name='P052', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWGothic-DemiOblique.otf', name='URW Gothic', style='oblique', variant='normal', weight=600, stretch='normal', size='scalable')) = 11.24
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/C059-Roman.otf', name='C059', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWGothic-BookOblique.otf', name='URW Gothic', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSans-ExtraLight.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=200, stretch='normal', size='scalable')) = 0.24
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSans-Bold.otf', name='Nimbus Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/C059-BdIta.otf', name='C059', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusMonoPS-Regular.otf', name='Nimbus Mono PS', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusMonoPS-Bold.otf', name='Nimbus Mono PS', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusMonoPS-Italic.otf', name='Nimbus Mono PS', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/stix/STIX-Italic.otf', name='STIX', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSans-Oblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 1.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusRoman-BoldItalic.otf', name='Nimbus Roman', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusRoman-Italic.otf', name='Nimbus Roman', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansCondensed-BoldOblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=700, stretch='condensed', size='scalable')) = 1.535
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWBookman-Demi.otf', name='URW Bookman', style='normal', variant='normal', weight=600, stretch='normal', size='scalable')) = 10.24
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/stix/STIX-BoldItalic.otf', name='STIX', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/P052-BoldItalic.otf', name='P052', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/P052-Italic.otf', name='P052', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusRoman-Regular.otf', name='Nimbus Roman', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSans-BoldOblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 1.335
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSansNarrow-Regular.otf', name='Nimbus Sans Narrow', style='normal', variant='normal', weight=400, stretch='condensed', size='scalable')) = 10.25
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansMono-Oblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSansNarrow-Oblique.otf', name='Nimbus Sans Narrow', style='oblique', variant='normal', weight=400, stretch='condensed', size='scalable')) = 11.25
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/C059-Italic.otf', name='C059', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansMono-BoldOblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/D050000L.otf', name='D050000L', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/abattis-cantarell/Cantarell-Bold.otf', name='Cantarell', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,008 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSansNarrow-BoldOblique.otf', name='Nimbus Sans Narrow', style='oblique', variant='normal', weight=700, stretch='condensed', size='scalable')) = 11.535
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansCondensed-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='condensed', size='scalable')) = 0.5349999999999999
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusMonoPS-BoldItalic.otf', name='Nimbus Mono PS', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/abattis-cantarell/Cantarell-Regular.otf', name='Cantarell', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusRoman-Bold.otf', name='Nimbus Roman', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWBookman-Light.otf', name='URW Bookman', style='normal', variant='normal', weight=300, stretch='normal', size='scalable')) = 10.145
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSansNarrow-Bold.otf', name='Nimbus Sans Narrow', style='normal', variant='normal', weight=700, stretch='condensed', size='scalable')) = 10.535
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/stix/STIXMath-Regular.otf', name='STIX Math', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWBookman-LightItalic.otf', name='URW Bookman', style='italic', variant='normal', weight=300, stretch='normal', size='scalable')) = 11.145
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/P052-Bold.otf', name='P052', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/C059-Bold.otf', name='C059', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSans-Italic.otf', name='Nimbus Sans', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSans-BoldItalic.otf', name='Nimbus Sans', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/abattis-cantarell/Cantarell-Oblique.otf', name='Cantarell', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansCondensed.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='condensed', size='scalable')) = 0.25
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWBookman-DemiItalic.otf', name='URW Bookman', style='italic', variant='normal', weight=600, stretch='normal', size='scalable')) = 11.24
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/stix/STIX-Bold.otf', name='STIX', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSans-Regular.otf', name='Nimbus Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/Z003-MediumItalic.otf', name='Z003', style='italic', variant='normal', weight=500, stretch='normal', size='scalable')) = 11.145
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/abattis-cantarell/Cantarell-BoldOblique.otf', name='Cantarell', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansCondensed-Oblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=400, stretch='condensed', size='scalable')) = 1.25
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/stix/STIX-Regular.otf', name='STIX', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,009 - matplotlib.font_manager - DEBUG - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=12.0.
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUni.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-BoldOblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 1.335
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/cmsy10.ttf', name='cmsy10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/cmss10.ttf', name='cmss10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerifDisplay.ttf', name='DejaVu Serif Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBolIta.ttf', name='STIXGeneral', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Oblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymReg.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/cmex10.ttf', name='cmex10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymReg.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Italic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymBol.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneral.ttf', name='STIXGeneral', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBolIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymReg.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/cmb10.ttf', name='cmb10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/cmtt10.ttf', name='cmtt10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymBol.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Bold.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,048 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymBol.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansDisplay.ttf', name='DejaVu Sans Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymReg.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-BoldOblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFiveSymReg.ttf', name='STIXSizeFiveSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymBol.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBol.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Oblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 1.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBol.ttf', name='STIXGeneral', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralItalic.ttf', name='STIXGeneral', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/cmr10.ttf', name='cmr10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/cmmi10.ttf', name='cmmi10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-BoldItalic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWGothic-Book.otf', name='URW Gothic', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWGothic-Demi.otf', name='URW Gothic', style='normal', variant='normal', weight=600, stretch='normal', size='scalable')) = 10.24
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/P052-Roman.otf', name='P052', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWGothic-DemiOblique.otf', name='URW Gothic', style='oblique', variant='normal', weight=600, stretch='normal', size='scalable')) = 11.24
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/C059-Roman.otf', name='C059', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWGothic-BookOblique.otf', name='URW Gothic', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSans-ExtraLight.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=200, stretch='normal', size='scalable')) = 0.24
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSans-Bold.otf', name='Nimbus Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/C059-BdIta.otf', name='C059', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusMonoPS-Regular.otf', name='Nimbus Mono PS', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusMonoPS-Bold.otf', name='Nimbus Mono PS', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusMonoPS-Italic.otf', name='Nimbus Mono PS', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/stix/STIX-Italic.otf', name='STIX', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSans-Oblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 1.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusRoman-BoldItalic.otf', name='Nimbus Roman', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusRoman-Italic.otf', name='Nimbus Roman', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansCondensed-BoldOblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=700, stretch='condensed', size='scalable')) = 1.535
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWBookman-Demi.otf', name='URW Bookman', style='normal', variant='normal', weight=600, stretch='normal', size='scalable')) = 10.24
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/stix/STIX-BoldItalic.otf', name='STIX', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/P052-BoldItalic.otf', name='P052', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/P052-Italic.otf', name='P052', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusRoman-Regular.otf', name='Nimbus Roman', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,049 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSans-BoldOblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 1.335
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSansNarrow-Regular.otf', name='Nimbus Sans Narrow', style='normal', variant='normal', weight=400, stretch='condensed', size='scalable')) = 10.25
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansMono-Oblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSansNarrow-Oblique.otf', name='Nimbus Sans Narrow', style='oblique', variant='normal', weight=400, stretch='condensed', size='scalable')) = 11.25
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/C059-Italic.otf', name='C059', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansMono-BoldOblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/D050000L.otf', name='D050000L', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/abattis-cantarell/Cantarell-Bold.otf', name='Cantarell', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSansNarrow-BoldOblique.otf', name='Nimbus Sans Narrow', style='oblique', variant='normal', weight=700, stretch='condensed', size='scalable')) = 11.535
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansCondensed-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='condensed', size='scalable')) = 0.5349999999999999
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusMonoPS-BoldItalic.otf', name='Nimbus Mono PS', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/abattis-cantarell/Cantarell-Regular.otf', name='Cantarell', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusRoman-Bold.otf', name='Nimbus Roman', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWBookman-Light.otf', name='URW Bookman', style='normal', variant='normal', weight=300, stretch='normal', size='scalable')) = 10.145
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSansNarrow-Bold.otf', name='Nimbus Sans Narrow', style='normal', variant='normal', weight=700, stretch='condensed', size='scalable')) = 10.535
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/stix/STIXMath-Regular.otf', name='STIX Math', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWBookman-LightItalic.otf', name='URW Bookman', style='italic', variant='normal', weight=300, stretch='normal', size='scalable')) = 11.145
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/P052-Bold.otf', name='P052', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/C059-Bold.otf', name='C059', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSans-Italic.otf', name='Nimbus Sans', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSans-BoldItalic.otf', name='Nimbus Sans', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/abattis-cantarell/Cantarell-Oblique.otf', name='Cantarell', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansCondensed.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='condensed', size='scalable')) = 0.25
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/URWBookman-DemiItalic.otf', name='URW Bookman', style='italic', variant='normal', weight=600, stretch='normal', size='scalable')) = 11.24
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/stix/STIX-Bold.otf', name='STIX', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/NimbusSans-Regular.otf', name='Nimbus Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/urw-base35/Z003-MediumItalic.otf', name='Z003', style='italic', variant='normal', weight=500, stretch='normal', size='scalable')) = 11.145
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/abattis-cantarell/Cantarell-BoldOblique.otf', name='Cantarell', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/dejavu/DejaVuSansCondensed-Oblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=400, stretch='condensed', size='scalable')) = 1.25
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: score(FontEntry(fname='/usr/share/fonts/stix/STIX-Regular.otf', name='STIX', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+2025-01-13 00:22:24,050 - matplotlib.font_manager - DEBUG - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=12.0 to DejaVu Sans ('/u/home/s/spaceman/.conda/envs/speechbrain/lib/python3.9/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.

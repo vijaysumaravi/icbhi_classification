@@ -1,0 +1,6 @@
+'normal' => 0
+'crackles' => 1
+'wheezes' => 2
+'both' => 3
+================
+'starting_index' => 0
