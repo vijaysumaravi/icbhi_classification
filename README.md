@@ -220,7 +220,7 @@ Overfitting was the most common problem in this project. The model was able to a
 2. Clone this repo
 3. move the ICBHI folder along with its contents to the Speechbrain 'recipes' folder
 3. cd to recipes/ICBHI/breathing_classification_2_classes/
-4. Download the dataset from https://bhichallenge.med.auth.gr/ and separate the audio and annotations into two different folders - `audio_data` and `annotation_data`. Rename labels file to `icbi_labels.txt` and data split file to `icbi_train_test_split.txt`. (Dataset is already provided in the repo)
+4. Download the dataset from https://bhichallenge.med.auth.gr/ and separate the audio and annotations into two different folders - `audio_data` and `annotation_data`. Rename labels file to `icbi_labels.txt` and data split file to `icbi_train_test_split.txt`. (Partial dataset is already provided in the repo). You can also download audio_data folder from here - https://drive.google.com/file/d/1J6G4qCId-7zZLbVsc_4KnwD5mHLlzrAT/view?usp=sharing
 5. In the hparams/train_utterance.yaml and hparams/train_patients.yaml, change the `data_folder` to the path where you have stored the audio and annotation data.
 6. The model checkpoints are stored in the respective task folders. For examples, the model for 2-class patient split evaluation is stored in `breathing_classification_2_classes/results_patient_split/ECAPA-TDNN/42/save`.
 7. Run the inference script: `python train.py hparams/train_utterance.yaml` for utterance split evaluation. Since the training is completed, the model is loaded from the checkpoint and evaluated on the test set.
