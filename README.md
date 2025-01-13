@@ -5,11 +5,11 @@ Summary: Summary: Using Time-dilated Convolutional Neural Networks (TDNNs) for b
 
 ## Dataset: 
 
-ICBHI - https://bhichallenge.med.auth.gr/
+Dataset can be downloaded from ICBHI Challenge website(https://bhichallenge.med.auth.gr/). After downloading data, separate the audio and annotations into two different folders - `audio_data` and `annotation_data`. Rename labels file to `icbi_labels.txt` and data split file to `icbi_train_test_split.txt`. 
 
 ### Dataset Description and Analysis
 
-Datasets analysis is done using the `data_analysis.py` script. Download the dataset from the website and separate the audio and annotations into two different folders - `audio_data` and `annotation_data`. Rename labels file to `icbi_labels.txt` and data split file to `icbi_train_test_split.txt`. Pass the path to main dataset folder to the script to get the analysis results.
+Preliminary datasets analysis is done using the `data_analysis.py` script to understand data distribution across different meta-data variables. Pass the path to main dataset folder to the script to get the analysis results. Below are some tables describing how the data is distrbuted. 
 
 #### Audio Data Analysis
 
@@ -22,6 +22,7 @@ Sampling Rate Distribution
 | 4000              | 90    | 9.8%       |
 | 10000             | 6     | 0.7%       |
 
+
 Chest Location Distribution
 | Location | Count | Percentage |
 |----------|-------|------------|
@@ -32,6 +33,7 @@ Chest Location Distribution
 | Tc       | 130   | 14.1%      |
 | Lr       | 112   | 12.2%      |
 | Ll       | 77    | 8.4%       |
+
 
 Equipment Distribution
 | Equipment      | Count | Percentage |
@@ -98,6 +100,7 @@ Respiratory Cycle Statistics
 | Maximum duration (s)| 16.163    |
 | Median duration (s) | 2.537     |
 
+
 Respiratory Events Count and Duration
 | Event Type              | Count | Percentage | Duration (s) | Duration % |
 |------------------------|-------|------------|--------------|------------|
@@ -106,6 +109,7 @@ Respiratory Events Count and Duration
 | Cycles with both         | 506   | 7.3%      | 1,548.3     | 8.3%      |
 | Cycles with either       | 3,256 | 47.2%     | 9,133.5     | 49.0%     |
 | Cycles with neither      | 3,642 | 52.8%     | 9,494.6     | 51.0%     |
+
 
 Breathing Cycle Distribution by Disease Label
 | Disease Label    | Normal | Abnormal | Total |
@@ -119,8 +123,6 @@ Breathing Cycle Distribution by Disease Label
 | Pneumonia       | 240    | 45        | 285    |
 | Bronchiolitis   | 76     | 84        | 160    |
 | Total           | 3642   | 3256      | 6898   |
-
-
 
 
 
@@ -156,12 +158,9 @@ In this project, we utilize Mel-frequency cepstral coefficients (MFCCs) as the p
 
 ## Model
 
-- ECAPA-TDNN: 
 The breathing sound classification model is built using the ECAPA-TDNN architecture, which is well-suited for processing sequential audio data. The model's embedding layer is configured with an input size of 384, calculated as the product of 128 Mel-frequency bands (`n_mels`) and 3, accounting for the inclusion of delta and double-delta features. The architecture consists of three convolutional layers with channel sizes of 256, 256, and 512, and kernel sizes of 5, 3, and 1, respectively. These layers are designed with dilations of 1, 2, and 1 to capture temporal patterns at different scales. An attention mechanism with 32 channels is employed to focus on the most relevant features, followed by a linear layer with 64 neurons. A dropout rate of 50% is applied to prevent overfitting. The classifier component of the model takes the 64-dimensional embeddings and outputs predictions for the two classes (normal and abnormal breathing sounds), leveraging the robust feature representations learned by the ECAPA-TDNN.
 
 ## Training
-
-
 The training setup for the breathing sound classification task is meticulously configured to optimize the performance of the ECAPA-TDNN model. The training process is set to run for 100 epochs, with a batch size of 32 to balance computational efficiency and model convergence. The learning rate is initialized at 0.0001, with a weight decay of 0.0002 to regularize the model and prevent overfitting. A cyclic learning rate scheduler is employed, operating in a `triangular2` mode with a base learning rate of 0.00001 and a maximum learning rate of 0.0001, adjusting the learning rate dynamically to enhance training stability. The scheduler's step size is set to 458 (based on the number of samples in the dataset - 13262), and a gamma value of 0.9998 is used to gradually reduce the learning rate over time.
 
 The data is shuffled before each epoch to ensure diverse mini-batches, and the sample rate for audio processing is set at 44,100 Hz. The model is trained using the Adam optimizer, which is well-suited for handling sparse gradients and non-stationary objectives. Checkpoints are saved every 15 minutes to safeguard against data loss and facilitate model recovery. The training process is logged to track progress and performance metrics, providing insights into the model's learning dynamics. This comprehensive training setup is designed to effectively harness the capabilities of the ECAPA-TDNN model for classifying breathing sounds into normal and abnormal categories.
@@ -171,13 +170,11 @@ The training progress is monitored and logged for each epoch, tracking multiple 
 Training model for 100 epochs takes around 1 hours on a single A6000GPU.
 
 ## Evaluation Metrics
-
 The evaluation of the breathing sound classification model is comprehensively documented through both quantitative metrics and visual plots. The `compute_eval_metrics` function calculates and records key performance metrics such as the F1-macro score, sensitivity, specificity, and an average score, along with the confusion matrix components (True Negatives, False Positives, False Negatives, and True Positives). These metrics are crucial for understanding the model's precision, recall, and overall discriminative power, and are saved in an `eval_metrics.txt` file within the specified output folder for easy access and analysis.
 
 In addition to these metrics, the training process is visually represented through loss curves, which are plotted and saved as `training_curves.png`. These plots display the moving averages of training and validation losses, as well as validation error over the epochs, providing a clear view of the model's learning dynamics. The loss curves help in diagnosing issues such as overfitting or underfitting by showing how the model's performance evolves over time. Together, these metrics and plots offer a comprehensive evaluation framework, ensuring that the model is both quantitatively and qualitatively assessed for its ability to classify normal and abnormal breathing sounds effectively.
 
 ## Inference 
-
 1. Clone this repo
 2. Install Speechbrain and matplotlib (pip install speechbrain matplotlib)
 3. cd to recipes/ICBHI/breathing_classification_2_classes/
@@ -189,46 +186,29 @@ In addition to these metrics, the training process is visually represented throu
 
 ## Results
 
-Class Distribution
+| Task | Model | F1-macro | Sensitivity | Specificity | Score | TN | FP | FN | TP |
+|------|-------|----------|-------------|-------------|-------|----|----|----|----|
+| Breathing (Abnormal vs Normal) | baseline-utterance (2.5s_75pc) | 0.763 | 0.640 | 0.894 | 0.767 | 1179 | 140 | 480 | 854 |
+| Breathing (Abnormal vs Normal) | baseline-patient (7s_50pc) | 0.567 | 0.453 | 0.827 | 0.640 | 311 | 65 | 461 | 382 |
+| Breathing (Abnormal vs Normal) | baseline-patient (7s_50pc) + data-aug (3x) | 0.540 | 0.394 | 0.867 | 0.630 | 326 | 50 | 511 | 332 |
+| Breathing (Crackle, Wheeze, Both, Normal) | baseline-patient (7s_50pc) | 0.2827 | 0.3206 | 0.8094 | 0.565 | - | - | - | - |
 
-| Class Label     | Count |
-|----------------|-------|
-| COPD           | 64    |
-| Healthy        | 26    |
-| URTI           | 14    |
-| Bronchiectasis | 7     |
-| Pneumonia      | 6     |
-| Bronchiolitis  | 6     |
-| LRTI           | 2     |
-| Asthma         | 1     |
+Detailed Results for 4-class classification:
 
-Speaker Distribution
+Per-class Metrics:
+| Class | Sensitivity | Specificity | Average |
+|-------|------------|-------------|---------|
+| Normal | 0.5665 | 0.7264 | 0.6465 |
+| Crackles | 0.6991 | 0.5290 | 0.6141 |
+| Wheezes | 0.0167 | 0.9824 | 0.4996 |
+| Both | 0.0000 | 1.0000 | 0.5000 |
+| **Mean** | **0.3206** | **0.8094** | **0.5650** |
 
-| Split | Unique Speakers |
-|-------|----------------|
-| Train | 79             |
-| Test  | 49             |
-| Total | 128            |
-
-Respiratory Cycle Statistics
-
-| Statistic                | Value     |
-|--------------------------|-----------|
-| Total number of cycles   | 6898      |
-| Total duration (s)       | 18628.112 |
-| Minimum duration (s)     | 0.200     |
-| Maximum duration (s)     | 16.163    |
-| Median duration (s)      | 2.537     |
-
-Respiratory Events Count and Duration
-
-| Event Type               | Count | Percentage | Duration (s) | Dur % |
-|-------------------------|-------|------------|--------------|-------|
-| Cycles with only crackles| 1864  | 27.0%     | 5190.4      | 27.9% |
-| Cycles with only wheezes | 886   | 12.8%     | 2394.8      | 12.9% |
-| Cycles with both        | 506   | 7.3%      | 1548.3      | 8.3%  |
-| Cycles with either      | 3256  | 47.2%     | 9133.5      | 49.0% |
-| Cycles with neither     | 3642  | 52.8%     | 9494.6      | 51.0% |
-
-
+Confusion Matrix:
+```
+[[298 223   5   0]
+ [ 65 151   0   0]
+ [ 21  38   1   0]
+ [  4  40   9   0]]
+```
 
