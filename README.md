@@ -1,10 +1,10 @@
 # Respiratory sounds classification using breathing audio
 
-Summary: 
+Summary: Using Time-dilated Convolutional Neural Networks (TDNNs) for breathing sound classification. Two setups evaluated: 2 class classification and 4 class classification. Mel-frequency filter banks are used as features. ECAPA-TDNN is used as the model. Model and Data-preprocessing are implemented in Speechbrain.
 
 
 ## Dataset: 
-
+Publicly available dataset:
 ICBHI - https://bhichallenge.med.auth.gr/
 
 ### Dataset Description
@@ -16,53 +16,48 @@ Datasets analysis is done using the `data_analysis.py` script. Download the data
 Number of audio files: 920
 
 Sampling Rate Distribution
---------------------------------------------------
-Sampling Rate (Hz)                  Count Percentage
---------------------------------------------------
-44100                                 824      89.6%
-4000                                   90       9.8%
-10000                                   6       0.7%
---------------------------------------------------
+
+| Sampling Rate (Hz) | Count | Percentage |
+|-------------------|-------|------------|
+| 44100             | 824   | 89.6%      |
+| 4000              | 90    | 9.8%       |
+| 10000             | 6     | 0.7%       |
 
 Chest Location Distribution
---------------------------------------------------
-Location                            Count Percentage
---------------------------------------------------
-Ar                                    168      18.3%
-Al                                    162      17.6%
-Pl                                    139      15.1%
-Pr                                    132      14.3%
-Tc                                    130      14.1%
-Lr                                    112      12.2%
-Ll                                     77       8.4%
---------------------------------------------------
+
+| Location | Count | Percentage |
+|----------|-------|------------|
+| Ar       | 168   | 18.3%      |
+| Al       | 162   | 17.6%      |
+| Pl       | 139   | 15.1%      |
+| Pr       | 132   | 14.3%      |
+| Tc       | 130   | 14.1%      |
+| Lr       | 112   | 12.2%      |
+| Ll       | 77    | 8.4%       |
 
 Equipment Distribution
---------------------------------------------------
-Equipment                           Count Percentage
---------------------------------------------------
-AKGC417L.wav                          646      70.2%
-Meditron.wav                          127      13.8%
-LittC2SE.wav                           87       9.5%
-Litt3200.wav                           60       6.5%
---------------------------------------------------
+
+| Equipment      | Count | Percentage |
+|---------------|-------|------------|
+| AKGC417L.wav  | 646   | 70.2%      |
+| Meditron.wav  | 127   | 13.8%      |
+| LittC2SE.wav  | 87    | 9.5%       |
+| Litt3200.wav  | 60    | 6.5%       |
 
 Channel Distribution
---------------------------------------------------
-Channels                            Count Percentage
---------------------------------------------------
-1                                     920     100.0%
---------------------------------------------------
+
+| Channels | Count | Percentage |
+|----------|-------|------------|
+| 1        | 920   | 100.0%     |
 
 Duration Statistics
---------------------------------------------------
-Statistic                 Value (seconds)
---------------------------------------------------
-Minimum                              7.86
-Maximum                             86.20
-Mean                                21.49
-Median                              20.00
---------------------------------------------------
+
+| Statistic | Value (seconds) |
+|-----------|----------------|
+| Minimum   | 7.86           |
+| Maximum   | 86.20          |
+| Mean      | 21.49          |
+| Median    | 20.00          |
 
 2. Disease Analysis
 
@@ -123,20 +118,38 @@ Cycles with neither                  3642      52.8%       9494.6      51.0%
 ---------------------------------------------------------------------------
 
 Breathing Cycle Distribution by Disease Label
--------------------------------------------------------
-Disease Label            Normal   Abnormal      Total
--------------------------------------------------------
-URTI                        214         29        243
-Healthy                     303         19        322
-Asthma                        2          4          6
-COPD                       2725       3021       5746
-LRTI                         31          1         32
-Bronchiectasis               51         53        104
-Pneumonia                   240         45        285
-Bronchiolitis                76         84        160
--------------------------------------------------------
-Total                      3642       3256       6898
--------------------------------------------------------
+
+| Disease Label    | Normal | Abnormal | Total |
+|-----------------|--------|-----------|--------|
+| URTI            | 214    | 29        | 243    |
+| Healthy         | 303    | 19        | 322    |
+| Asthma          | 2      | 4         | 6      |
+| COPD            | 2725   | 3021      | 5746   |
+| LRTI            | 31     | 1         | 32     |
+| Bronchiectasis  | 51     | 53        | 104    |
+| Pneumonia       | 240    | 45        | 285    |
+| Bronchiolitis   | 76     | 84        | 160    |
+| Total           | 3642   | 3256      | 6898   |
+
+Dataset Statistics:
+
+| Metric              | Combined | Train  | Valid  | Test   |
+|--------------------|----------|--------|--------|--------|
+| # Patients         | 109      | 109    | 102    | 109    |
+| # Normal/Abnormal  | 6596/6666| 4617/4665| 660/667| 1319/1334|
+| # Total Utterances | 13262    | 9282   | 1327   | 2653   |
+| Duration (hours)   | 7.12     | 4.98   | 0.71   | 1.43   |
+| Mean/Median Dur (s)| 1.9/2.0  | 1.9/2.0| 1.9/2.0| 1.9/2.0|
+
+Dataset Statistics:
+
+| Metric              | Combined | Train  | Valid  | Test   |
+|--------------------|----------|--------|--------|--------|
+| # Patients         | 109      | 65     | 22     | 22     |
+| # Normal/Abnormal  | 2956/2865| 1823/1319| 757/703| 376/843|
+| # Total Utterances | 5821     | 3142   | 1460   | 1219   |
+| Duration (hours)   | 4.30     | 2.43   | 0.99   | 0.88   |
+| Mean/Median Dur (s)| 2.7/2.5  | 2.8/2.6| 2.4/2.4| 2.6/2.5|
 
 ## Data Preprocessing and Feature Extraction
 
@@ -205,6 +218,47 @@ In addition to these metrics, the training process is visually represented throu
 8. Results are stored in `results_patient_split/ECAPA-TDNN/42/eval_metrics.txt` and `results_utterance_split/ECAPA-TDNN/42/eval_metrics.txt`
 
 ## Results
+
+Class Distribution
+
+| Class Label     | Count |
+|----------------|-------|
+| COPD           | 64    |
+| Healthy        | 26    |
+| URTI           | 14    |
+| Bronchiectasis | 7     |
+| Pneumonia      | 6     |
+| Bronchiolitis  | 6     |
+| LRTI           | 2     |
+| Asthma         | 1     |
+
+Speaker Distribution
+
+| Split | Unique Speakers |
+|-------|----------------|
+| Train | 79             |
+| Test  | 49             |
+| Total | 128            |
+
+Respiratory Cycle Statistics
+
+| Statistic                | Value     |
+|--------------------------|-----------|
+| Total number of cycles   | 6898      |
+| Total duration (s)       | 18628.112 |
+| Minimum duration (s)     | 0.200     |
+| Maximum duration (s)     | 16.163    |
+| Median duration (s)      | 2.537     |
+
+Respiratory Events Count and Duration
+
+| Event Type               | Count | Percentage | Duration (s) | Dur % |
+|-------------------------|-------|------------|--------------|-------|
+| Cycles with only crackles| 1864  | 27.0%     | 5190.4      | 27.9% |
+| Cycles with only wheezes | 886   | 12.8%     | 2394.8      | 12.9% |
+| Cycles with both        | 506   | 7.3%      | 1548.3      | 8.3%  |
+| Cycles with either      | 3256  | 47.2%     | 9133.5      | 49.0% |
+| Cycles with neither     | 3642  | 52.8%     | 9494.6      | 51.0% |
 
 
 
