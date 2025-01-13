@@ -1,22 +1,21 @@
 # Respiratory sounds classification using breathing audio
 
-Summary: Using Time-dilated Convolutional Neural Networks (TDNNs) for breathing sound classification. Two setups evaluated: 2 class classification and 4 class classification. Mel-frequency filter banks are used as features. ECAPA-TDNN is used as the model. Model and Data-preprocessing are implemented in Speechbrain.
+Summary: 
 
 
 ## Dataset: 
-Publicly available dataset:
+
 ICBHI - https://bhichallenge.med.auth.gr/
 
-### Dataset Description
+### Dataset Description and Analysis
 
 Datasets analysis is done using the `data_analysis.py` script. Download the dataset from the website and separate the audio and annotations into two different folders - `audio_data` and `annotation_data`. Rename labels file to `icbi_labels.txt` and data split file to `icbi_train_test_split.txt`. Pass the path to main dataset folder to the script to get the analysis results.
 
-1. Audio Data Analysis
+#### Audio Data Analysis
 
 Number of audio files: 920
 
 Sampling Rate Distribution
-
 | Sampling Rate (Hz) | Count | Percentage |
 |-------------------|-------|------------|
 | 44100             | 824   | 89.6%      |
@@ -24,7 +23,6 @@ Sampling Rate Distribution
 | 10000             | 6     | 0.7%       |
 
 Chest Location Distribution
-
 | Location | Count | Percentage |
 |----------|-------|------------|
 | Ar       | 168   | 18.3%      |
@@ -36,7 +34,6 @@ Chest Location Distribution
 | Ll       | 77    | 8.4%       |
 
 Equipment Distribution
-
 | Equipment      | Count | Percentage |
 |---------------|-------|------------|
 | AKGC417L.wav  | 646   | 70.2%      |
@@ -45,13 +42,11 @@ Equipment Distribution
 | Litt3200.wav  | 60    | 6.5%       |
 
 Channel Distribution
-
 | Channels | Count | Percentage |
 |----------|-------|------------|
 | 1        | 920   | 100.0%     |
 
 Duration Statistics
-
 | Statistic | Value (seconds) |
 |-----------|----------------|
 | Minimum   | 7.86           |
@@ -59,66 +54,60 @@ Duration Statistics
 | Mean      | 21.49          |
 | Median    | 20.00          |
 
-2. Disease Analysis
+
+
+#### Disease Analysis
 
 Number of classes: 8
+
 Class Distribution
-----------------------------------------
-Class Label                         Count
-----------------------------------------
-COPD                                   64
-Healthy                                26
-URTI                                   14
-Bronchiectasis                          7
-Pneumonia                               6
-Bronchiolitis                           6
-LRTI                                    2
-Asthma                                  1
-----------------------------------------
+| Class Label    | Count |
+|---------------|-------|
+| COPD          | 64    |
+| Healthy       | 26    |
+| URTI          | 14    |
+| Bronchiectasis| 7     |
+| Pneumonia     | 6     |
+| Bronchiolitis | 6     |
+| LRTI          | 2     |
+| Asthma        | 1     |
+
 Total number of patients: 126
 
 
-3. Official Data Split Analysis
-
+#### Official Data Split Analysis
 Number of train utterances: 539
 Number of test utterances: 381
 
 Speaker Distribution
-----------------------------------------
-Split                     Unique Speakers
-----------------------------------------
-Train                                  79
-Test                                   49
-Total                                 128
-----------------------------------------
-Warning: These speakers are present in both train and test: {'156', '218'}
+| Split          | Unique Speakers |
+|----------------|----------------|
+| Train          | 79             |
+| Test           | 49             |
+| Total Unique*  | 126            |
+*Note: Two speakers ('156', '218') appear in both train and test sets
 
-4. Respiratory Cycle Statistics
+#### Meta Analysis
 
 Respiratory Cycle Statistics
---------------------------------------------------
-Statistic                                     Value
---------------------------------------------------
-Total number of cycles                         6898
-Total duration (s)                        18628.112
-Minimum duration (s)                          0.200
-Maximum duration (s)                         16.163
-Median duration (s)                           2.537
---------------------------------------------------
+| Statistic            | Value     |
+|---------------------|-----------|
+| Total number of cycles | 6,898     |
+| Total duration (s)  | 18,628.112|
+| Minimum duration (s)| 0.200     |
+| Maximum duration (s)| 16.163    |
+| Median duration (s) | 2.537     |
 
 Respiratory Events Count and Duration
----------------------------------------------------------------------------
-Event Type                          Count Percentage Duration (s)      Dur %
----------------------------------------------------------------------------
-Cycles with only crackles            1864      27.0%       5190.4      27.9%
-Cycles with only wheezes              886      12.8%       2394.8      12.9%
-Cycles with both                      506       7.3%       1548.3       8.3%
-Cycles with either                   3256      47.2%       9133.5      49.0%
-Cycles with neither                  3642      52.8%       9494.6      51.0%
----------------------------------------------------------------------------
+| Event Type              | Count | Percentage | Duration (s) | Duration % |
+|------------------------|-------|------------|--------------|------------|
+| Cycles with only crackles | 1,864 | 27.0%     | 5,190.4     | 27.9%     |
+| Cycles with only wheezes  | 886   | 12.8%     | 2,394.8     | 12.9%     |
+| Cycles with both         | 506   | 7.3%      | 1,548.3     | 8.3%      |
+| Cycles with either       | 3,256 | 47.2%     | 9,133.5     | 49.0%     |
+| Cycles with neither      | 3,642 | 52.8%     | 9,494.6     | 51.0%     |
 
 Breathing Cycle Distribution by Disease Label
-
 | Disease Label    | Normal | Abnormal | Total |
 |-----------------|--------|-----------|--------|
 | URTI            | 214    | 29        | 243    |
@@ -131,8 +120,18 @@ Breathing Cycle Distribution by Disease Label
 | Bronchiolitis   | 76     | 84        | 160    |
 | Total           | 3642   | 3256      | 6898   |
 
-Dataset Statistics:
 
+
+
+
+## Data Preprocessing and Feature Extraction
+
+1. Removed files which have sampling rate other than 44100
+2. Chunked the segments with win_len and hop parameters as audio_processing_options in train.yaml
+3. Split the data into train, validation and test sets with the split_type and split_variable as train.yaml. Each split is stratified using label( abnormal and normal) as stratification variable.
+    a. split_utterance: split all the segments randomly into train, validation and test sets (0.7, 0.1, 0.2)
+
+Dataset Statistics
 | Metric              | Combined | Train  | Valid  | Test   |
 |--------------------|----------|--------|--------|--------|
 | # Patients         | 109      | 109    | 102    | 109    |
@@ -141,8 +140,9 @@ Dataset Statistics:
 | Duration (hours)   | 7.12     | 4.98   | 0.71   | 1.43   |
 | Mean/Median Dur (s)| 1.9/2.0  | 1.9/2.0| 1.9/2.0| 1.9/2.0|
 
-Dataset Statistics:
+b. split_patient: split the patients into train, validation and test sets (0.7, 0.1, 0.2) and then take all the segments from the patients in the train, validation and test sets. Patients don't overlap. 
 
+Dataset Statistics
 | Metric              | Combined | Train  | Valid  | Test   |
 |--------------------|----------|--------|--------|--------|
 | # Patients         | 109      | 65     | 22     | 22     |
@@ -150,36 +150,6 @@ Dataset Statistics:
 | # Total Utterances | 5821     | 3142   | 1460   | 1219   |
 | Duration (hours)   | 4.30     | 2.43   | 0.99   | 0.88   |
 | Mean/Median Dur (s)| 2.7/2.5  | 2.8/2.6| 2.4/2.4| 2.6/2.5|
-
-## Data Preprocessing and Feature Extraction
-
-1. Removed files which have sampling rate other than 44100
-2. Chunked the segments with win_len and hop parameters as audio_processing_options in train.yaml
-3. Split the data into train, validation and test sets with the split_type and split_variable as train.yaml. Each split is stratified using label( abnormal and normal) as stratification variable.
-    a. split_utterance: split all the segments randomly into train, validation and test sets (0.7, 0.1, 0.2)
-    Dataset Statistics:
--------------------------------------------------------------------------------------
-Metric                    Combined        Train           Valid           Test           
--------------------------------------------------------------------------------------
-# Patients               109            109            102            109            
-# Normal/Abnormal        6596/6666      4617/4665      660/667        1319/1334      
-# Total Utterances       13262          9282           1327           2653           
-Duration (hours)         7.12           4.98           0.71           1.43           
-Mean/Median Dur (s)      1.9/2.0        1.9/2.0        1.9/2.0        1.9/2.0        
--------------------------------------------------------------------------------------
-
-b. split_patient: split the patients into train, validation and test sets (0.7, 0.1, 0.2) and then take all the segments from the patients in the train, validation and test sets. Patients don't overlap. 
-
-Dataset Statistics:
--------------------------------------------------------------------------------------
-Metric                    Combined        Train           Valid           Test           
--------------------------------------------------------------------------------------
-# Patients               109            65             22             22             
-# Normal/Abnormal        2956/2865      1823/1319      757/703        376/843        
-# Total Utterances       5821           3142           1460           1219           
-Duration (hours)         4.30           2.43           0.99           0.88           
-Mean/Median Dur (s)      2.7/2.5        2.8/2.6        2.4/2.4        2.6/2.5        
--------------------------------------------------------------------------------------
 
 4. Feature Extraction:
 In this project, we utilize Mel-frequency cepstral coefficients (MFCCs) as the primary feature for breathing sound classification. The feature extraction process involves computing a set of 128 Mel-frequency bands (n_mels) from the audio signals, using a Fast Fourier Transform (FFT) size of 2048 (n_fft). The analysis window length is set to 46 samples (win_length), with a hop length of 12 samples (hop_length) to ensure overlap and smooth transitions between frames. Additionally, the feature set includes delta and double-delta coefficients (deltas: True), which capture the temporal dynamics of the audio signals. This comprehensive feature set is designed to effectively represent the acoustic characteristics of normal and abnormal breathing sounds for classification tasks.
